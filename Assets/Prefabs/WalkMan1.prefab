@@ -1161,6 +1161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2113573993983117110}
+  - component: {fileID: 3873594806708116089}
   m_Layer: 0
   m_Name: WalkMan1
   m_TagString: Untagged
@@ -1201,6 +1202,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3873594806708116089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113573993983117111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 011fee0cb5b9bea48ad14e364a4d254d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Head: {fileID: 3103756628592515043}
+  Chest: {fileID: 1150251797076216881}
+  Waist: {fileID: 4769931908683082651}
+  RightHand: {fileID: 5186516257974665639}
+  RightArm: {fileID: 5555538930888808246}
+  RightShoulder: {fileID: 5243190129032320546}
+  LeftHand: {fileID: 7744547702088886163}
+  LeftArm: {fileID: 372904389207695068}
+  LeftShoulder: {fileID: 6640281915479731016}
+  Hip: {fileID: 3997973301165327949}
+  LeftUpLeg: {fileID: 8883978935010732873}
+  LeftLeg: {fileID: 6493578565739132631}
+  LeftFoot: {fileID: 6547521274650835837}
+  LeftToe: {fileID: 2076888019626654556}
+  RightUpLeg: {fileID: 449599887629572030}
+  RightLeg: {fileID: 1377574256411950836}
+  RightFoot: {fileID: 5262325608169345765}
+  RightToe: {fileID: 5754185894850454812}
 --- !u!1 &3103756628592515043
 GameObject:
   m_ObjectHideFlags: 0
