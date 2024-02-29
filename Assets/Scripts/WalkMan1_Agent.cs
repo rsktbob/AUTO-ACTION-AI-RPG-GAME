@@ -248,7 +248,7 @@ public class WalkMan1_Agent : Agent
         // -----------------------------------
         
         /* Chest */
-        sensor.AddObservation(RelativeBodyPosition(robot.Chest.transform.position)); // position
+        sensor.AddObservation(robot.Chest.transform.localPosition); // position
         sensor.AddObservation(robot.Chest.GetComponent<Rigidbody>().velocity); // velocity
         sensor.AddObservation(robot.Chest.GetComponent<Rigidbody>().angularVelocity); // angular velocity
         /* Waist */
@@ -313,15 +313,9 @@ public class WalkMan1_Agent : Agent
         {
             Destroy(robot.gameObject);
         }
-        robot = Instantiate(robotPrefab, new Vector3(0,0,0), new Quaternion(0,0,0,0)).GetComponent<Walkman>();
+        robot = Instantiate(robotPrefab, new Vector3(transform.position.x, transform.position.y+ 0.5f, transform.position.z), new Quaternion(0,0,0,0)).GetComponent<Walkman>();
         robot.transform.parent = transform;
-        robot.transform.localPosition = new Vector3(0, 0, 0);
-        Vector3 randomPosition = new Vector3(
-            UnityEngine.Random.Range(-2, 2),
-            UnityEngine.Random.Range(InitPositionMinY, InitPositionMaxY),
-            UnityEngine.Random.Range(-2, 2));
-        Console.WriteLine(randomPosition);
-        robot.Move(randomPosition);
+        
     }
 
     private Vector3 RelativeBodyPosition(Vector3 position)
