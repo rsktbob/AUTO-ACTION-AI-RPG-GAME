@@ -832,6 +832,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Walking_Env
       objectReference: {fileID: 0}
+    - target: {fileID: 6028989597133099639, guid: 39c04f511b4cde14580911ddd4155916, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39c04f511b4cde14580911ddd4155916, type: 3}
 --- !u!1001 &1151436632
