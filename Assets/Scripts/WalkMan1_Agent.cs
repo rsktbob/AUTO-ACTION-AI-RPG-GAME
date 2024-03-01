@@ -19,7 +19,7 @@ public class WalkMan1_Agent : Agent
     public override void OnEpisodeBegin()
     {
         InvokeRepeating("AddRewardToRobot", 1f, 1f); // add reward every 1 sec
-        InvokeRepeating("JudgeWhetherEnterNextEpisode", 10f, 10f); // judge next episode every 10 sec
+        InvokeRepeating("JudgeWhetherEnterNextEpisode", 5f, 5f); // judge next episode every 10 sec
         CreateNewRobot();
     }
 
@@ -31,78 +31,78 @@ public class WalkMan1_Agent : Agent
             actions.ContinuousActions[0],
             actions.ContinuousActions[1],
             actions.ContinuousActions[2]
-            ) * 100;
+            ) * 50;
         Vector3 targetLeftLegAngularVelocity = new Vector3(
             actions.ContinuousActions[3],
             actions.ContinuousActions[4],
             actions.ContinuousActions[5]
-            ) * 100;
+            ) * 50;
         Vector3 targetLeftFootAngularVelocity = new Vector3(
             actions.ContinuousActions[6],
             actions.ContinuousActions[7],
             actions.ContinuousActions[8]
-            ) * 100;
+            ) * 50;
         Vector3 targetLeftToeAngularVelocity = new Vector3(
             actions.ContinuousActions[9],
             actions.ContinuousActions[10],
             actions.ContinuousActions[11]
-            ) * 100;
+            ) * 50;
 
         /* Right leg, Foot, Toe */
         Vector3 targetRightUpLegAngularVelocity = new Vector3(
             actions.ContinuousActions[12],
             actions.ContinuousActions[13],
             actions.ContinuousActions[14]
-            ) * 100;
+            ) * 50;
         Vector3 targetRightLegAngularVelocity = new Vector3(
             actions.ContinuousActions[15],
             actions.ContinuousActions[16],
             actions.ContinuousActions[17]
-            ) * 100;
+            ) * 50;
         Vector3 targetRightFootAngularVelocity = new Vector3(
             actions.ContinuousActions[18],
             actions.ContinuousActions[19],
             actions.ContinuousActions[20]
-            ) * 100;
+            ) * 50;
         Vector3 targetRightToeAngularVelocity = new Vector3(
             actions.ContinuousActions[21],
             actions.ContinuousActions[22],
             actions.ContinuousActions[23]
-            ) * 100;
+            ) * 50;
 
         /* Left shoulder, arm, hand */
         Vector3 targetLeftShoulderAngularVelocity = new Vector3(
             actions.ContinuousActions[24],
             actions.ContinuousActions[25],
             actions.ContinuousActions[26]
-            ) * 20;
+            ) * 30;
         Vector3 targetLeftArmAngularVelocity = new Vector3(
             actions.ContinuousActions[27],
             actions.ContinuousActions[28],
             actions.ContinuousActions[29]
-            ) * 17;
+            ) * 22;
         Vector3 targetLeftHandAngularVelocity = new Vector3(
             actions.ContinuousActions[30],
             actions.ContinuousActions[31],
             actions.ContinuousActions[32]
-            ) * 17;
+            ) * 22;
 
         /* Right shoulder, arm, hand */
         Vector3 targetRightShoulderAngularVelocity = new Vector3(
             actions.ContinuousActions[33],
             actions.ContinuousActions[34],
             actions.ContinuousActions[35]
-            ) * 20;
+            ) * 30;
         Vector3 targetRightArmAngularVelocity = new Vector3(
             actions.ContinuousActions[36],
             actions.ContinuousActions[37],
             actions.ContinuousActions[38]
-            ) * 17;
+            ) * 22;
         Vector3 targetRightHandAngularVelocity = new Vector3(
             actions.ContinuousActions[39],
             actions.ContinuousActions[40],
             actions.ContinuousActions[41]
-            ) * 17;
+            ) * 22;
 
         /* Hip */
         Vector3 targetHipAngularVelocity = new Vector3(
@@ -117,16 +117,11 @@ public class WalkMan1_Agent : Agent
             actions.ContinuousActions[46],
             actions.ContinuousActions[47]
             ) * 45;
-        Vector3 targetChestAngularVelocity = new Vector3(
+
+        Vector3 targetHeadAngularVelocity = new Vector3(
             actions.ContinuousActions[48],
             actions.ContinuousActions[49],
             actions.ContinuousActions[50]
-            ) * 25;
-
-        Vector3 targetHeadAngularVelocity = new Vector3(
-            actions.ContinuousActions[51],
-            actions.ContinuousActions[52],
-            actions.ContinuousActions[53]
             ) * 7;
 
 
@@ -156,7 +151,6 @@ public class WalkMan1_Agent : Agent
         robot.Hip.GetComponent<ConfigurableJoint>().targetAngularVelocity = targetHipAngularVelocity;
 
         // output Chest, Waist, Head
-        robot.Chest.GetComponent<ConfigurableJoint>().targetAngularVelocity = targetChestAngularVelocity;
         robot.Waist.GetComponent<ConfigurableJoint>().targetAngularVelocity = targetWaistAngularVelocity;
         robot.Head.GetComponent<ConfigurableJoint>().targetAngularVelocity = targetHeadAngularVelocity;
 
@@ -241,14 +235,14 @@ public class WalkMan1_Agent : Agent
         // -----------------------------------
 
         /* Hip */
-        sensor.AddObservation(RelativeBodyPosition(robot.Hip.transform.position)); // position
+        sensor.AddObservation(robot.Hip.transform.localPosition); // position
         sensor.AddObservation(robot.Hip.GetComponent<Rigidbody>().velocity); // velocity
         sensor.AddObservation(robot.Hip.GetComponent<Rigidbody>().angularVelocity); // angular velocity
         
         // -----------------------------------
         
         /* Chest */
-        sensor.AddObservation(robot.Chest.transform.localPosition); // position
+        sensor.AddObservation(RelativeBodyPosition(robot.Chest.transform.position)); // position
         sensor.AddObservation(robot.Chest.GetComponent<Rigidbody>().velocity); // velocity
         sensor.AddObservation(robot.Chest.GetComponent<Rigidbody>().angularVelocity); // angular velocity
         /* Waist */
@@ -267,37 +261,15 @@ public class WalkMan1_Agent : Agent
         float LeftFootToHeadDistance = robot.Head.transform.localPosition.y - robot.LeftFoot.transform.localPosition.y;
         float RightFootToHeadDistance = robot.Head.transform.localPosition.y - robot.RightFoot.transform.localPosition.y;
 
-        // Left Foot to head height distance reward
-        if (LeftFootToHeadDistance > 4.2)
-        {
-            AddReward(0.1f);
-        }
-        else if (LeftFootToHeadDistance >= 4 && LeftFootToHeadDistance <= 4.2)
-        {
-            AddReward(0.05f);
-        }
-        else
-        {
-            AddReward(-1f);
-        }
-        // Right Foot to head height distance reward
-        if (RightFootToHeadDistance > 4.2)
-        {
-            AddReward(0.1f);
-        }
-        else if (RightFootToHeadDistance >= 4 && RightFootToHeadDistance <= 4.2)
-        {
-            AddReward(0.05f);
-        }
-        else
-        {
-            AddReward(-1f);
-        }
 
+        AddReward(LeftFootToHeadDistance-2);
+        AddReward(RightFootToHeadDistance - 2);
+        AddReward((40 - robot.Chest.transform.eulerAngles.x - robot.Chest.transform.eulerAngles.z)/30);
+        AddReward((40 - robot.Hip.transform.eulerAngles.x - robot.Hip.transform.eulerAngles.z) / 30);
         // Height reward
-        float heightReward = robot.Head.transform.localPosition.y - rewardUpperLimit;
-        heightReward = heightReward > 0 ? (float)Math.Pow(20, heightReward) + heightReward : heightReward;
-        AddReward(heightReward);
+        //float heightReward = robot.Head.transform.localPosition.y - rewardUpperLimit;
+        //heightReward = heightReward > 0 ? (float)Math.Pow(20, heightReward) + heightReward : heightReward;
+        //AddReward(heightReward);
     }
 
 
@@ -320,7 +292,7 @@ public class WalkMan1_Agent : Agent
 
     private Vector3 RelativeBodyPosition(Vector3 position)
     {
-        return position - robot.Chest.transform.position;
+        return position - robot.Hip.transform.position;
     }
 
     // Judge whether enter next episode
