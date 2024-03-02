@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3964505183756115679}
   - component: {fileID: 7908211749105540475}
   - component: {fileID: 5317305576621901482}
+  - component: {fileID: 383658705768048525}
   m_Layer: 0
   m_Name: LeftArm
   m_TagString: Untagged
@@ -211,6 +212,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &383658705768048525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372904389207695068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d862db244c8c4b4bb4b3e7a7ed86d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTouchFloor: 0
 --- !u!1 &449599887629572030
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,6 +239,7 @@ GameObject:
   - component: {fileID: 5682002405383074320}
   - component: {fileID: 1476737558203706144}
   - component: {fileID: 7731052123525927271}
+  - component: {fileID: 4742543258394645679}
   m_Layer: 0
   m_Name: RightUpLeg
   m_TagString: Untagged
@@ -318,7 +333,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 449599887629572030}
   serializedVersion: 2
-  m_Mass: 8.382278
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -422,6 +437,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &4742543258394645679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449599887629572030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d862db244c8c4b4bb4b3e7a7ed86d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTouchFloor: 0
 --- !u!1 &1150251797076216881
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,6 +464,7 @@ GameObject:
   - component: {fileID: 3865618872438677482}
   - component: {fileID: 1093979688466553884}
   - component: {fileID: 1063149750714285985}
+  - component: {fileID: 5412212064634486839}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -633,6 +662,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &5412212064634486839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150251797076216881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d862db244c8c4b4bb4b3e7a7ed86d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTouchFloor: 0
 --- !u!1 &1377574256411950836
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,6 +689,7 @@ GameObject:
   - component: {fileID: 4541542032440932730}
   - component: {fileID: 7868990652109463395}
   - component: {fileID: 6169308944884857841}
+  - component: {fileID: 3109121593284830482}
   m_Layer: 0
   m_Name: RightLeg
   m_TagString: Untagged
@@ -740,7 +783,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377574256411950836}
   serializedVersion: 2
-  m_Mass: 6.6705017
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -844,6 +887,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &3109121593284830482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377574256411950836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d862db244c8c4b4bb4b3e7a7ed86d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTouchFloor: 0
 --- !u!1 &1884168174395286371
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,6 +1011,7 @@ GameObject:
   - component: {fileID: 295519554800582094}
   - component: {fileID: 8687138442424499356}
   - component: {fileID: 4909814382457475309}
+  - component: {fileID: 4361965153876816236}
   m_Layer: 0
   m_Name: LeftToe
   m_TagString: Untagged
@@ -1152,6 +1209,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &4361965153876816236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076888019626654556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d862db244c8c4b4bb4b3e7a7ed86d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTouchFloor: 0
 --- !u!1 &2113573993983117111
 GameObject:
   m_ObjectHideFlags: 0
@@ -1246,6 +1316,7 @@ GameObject:
   - component: {fileID: 4382425713915984763}
   - component: {fileID: 4165279976543882568}
   - component: {fileID: 7583437487698727174}
+  - component: {fileID: 8915214710051455614}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -1445,6 +1516,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &8915214710051455614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3103756628592515043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d862db244c8c4b4bb4b3e7a7ed86d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTouchFloor: 0
 --- !u!1 &3997973301165327949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,6 +1543,7 @@ GameObject:
   - component: {fileID: 6118633510593686998}
   - component: {fileID: 1112602019100250001}
   - component: {fileID: 2792257501911942639}
+  - component: {fileID: 7900942238146524169}
   m_Layer: 0
   m_Name: Hip
   m_TagString: Untagged
@@ -1656,6 +1741,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &7900942238146524169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3997973301165327949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d862db244c8c4b4bb4b3e7a7ed86d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTouchFloor: 0
 --- !u!1 &4769931908683082651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,6 +1768,7 @@ GameObject:
   - component: {fileID: 7364713671102526703}
   - component: {fileID: 6310056148218076398}
   - component: {fileID: 3699691803112588293}
+  - component: {fileID: 778386183405045095}
   m_Layer: 0
   m_Name: Waist
   m_TagString: Untagged
@@ -1867,6 +1966,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &778386183405045095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4769931908683082651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d862db244c8c4b4bb4b3e7a7ed86d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTouchFloor: 0
 --- !u!1 &5186516257974665639
 GameObject:
   m_ObjectHideFlags: 0
@@ -1881,6 +1993,7 @@ GameObject:
   - component: {fileID: 1477854705068277562}
   - component: {fileID: 2508401103109472073}
   - component: {fileID: 8923443821347191177}
+  - component: {fileID: 602822141509669018}
   m_Layer: 0
   m_Name: RightHand
   m_TagString: Untagged
@@ -2078,6 +2191,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &602822141509669018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5186516257974665639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d862db244c8c4b4bb4b3e7a7ed86d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTouchFloor: 0
 --- !u!1 &5243190129032320546
 GameObject:
   m_ObjectHideFlags: 0
@@ -2092,6 +2218,7 @@ GameObject:
   - component: {fileID: 6399633484566986779}
   - component: {fileID: 64873641190556284}
   - component: {fileID: 8707760115700723435}
+  - component: {fileID: 198774558159378666}
   m_Layer: 0
   m_Name: RightShoulder
   m_TagString: Untagged
@@ -2289,6 +2416,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &198774558159378666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5243190129032320546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d862db244c8c4b4bb4b3e7a7ed86d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTouchFloor: 0
 --- !u!1 &5262325608169345765
 GameObject:
   m_ObjectHideFlags: 0
@@ -2303,6 +2443,7 @@ GameObject:
   - component: {fileID: 1229358481508145282}
   - component: {fileID: 5102932122009337732}
   - component: {fileID: 5090064049131368094}
+  - component: {fileID: 3645135264218452395}
   m_Layer: 0
   m_Name: RightFoot
   m_TagString: Untagged
@@ -2500,6 +2641,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &3645135264218452395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5262325608169345765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d862db244c8c4b4bb4b3e7a7ed86d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTouchFloor: 0
 --- !u!1 &5555538930888808246
 GameObject:
   m_ObjectHideFlags: 0
@@ -2514,6 +2668,7 @@ GameObject:
   - component: {fileID: 8230882696495394629}
   - component: {fileID: 3901080200589995932}
   - component: {fileID: 3888284395703867117}
+  - component: {fileID: 415430198050595556}
   m_Layer: 0
   m_Name: RightArm
   m_TagString: Untagged
@@ -2711,6 +2866,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &415430198050595556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5555538930888808246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d862db244c8c4b4bb4b3e7a7ed86d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTouchFloor: 0
 --- !u!1 &5754185894850454812
 GameObject:
   m_ObjectHideFlags: 0
@@ -2725,6 +2893,7 @@ GameObject:
   - component: {fileID: 2103668420973860437}
   - component: {fileID: 5351614057044629270}
   - component: {fileID: 7915859204976088017}
+  - component: {fileID: 4613329134175338874}
   m_Layer: 0
   m_Name: RightToe
   m_TagString: Untagged
@@ -2922,6 +3091,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &4613329134175338874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5754185894850454812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d862db244c8c4b4bb4b3e7a7ed86d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTouchFloor: 0
 --- !u!1 &6212186354352045735
 GameObject:
   m_ObjectHideFlags: 0
@@ -3033,6 +3215,7 @@ GameObject:
   - component: {fileID: 2037748265747948997}
   - component: {fileID: 455309641428270917}
   - component: {fileID: 5399734953474312136}
+  - component: {fileID: 2564897570813141774}
   m_Layer: 0
   m_Name: LeftLeg
   m_TagString: Untagged
@@ -3126,7 +3309,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6493578565739132631}
   serializedVersion: 2
-  m_Mass: 6.6705017
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -3230,6 +3413,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &2564897570813141774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6493578565739132631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d862db244c8c4b4bb4b3e7a7ed86d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTouchFloor: 0
 --- !u!1 &6547521274650835837
 GameObject:
   m_ObjectHideFlags: 0
@@ -3244,6 +3440,7 @@ GameObject:
   - component: {fileID: 9188313329901084094}
   - component: {fileID: 2591746155266820796}
   - component: {fileID: 6979709991084214409}
+  - component: {fileID: 4488370415729314447}
   m_Layer: 0
   m_Name: LeftFoot
   m_TagString: Untagged
@@ -3441,6 +3638,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &4488370415729314447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6547521274650835837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d862db244c8c4b4bb4b3e7a7ed86d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTouchFloor: 0
 --- !u!1 &6640281915479731016
 GameObject:
   m_ObjectHideFlags: 0
@@ -3455,6 +3665,7 @@ GameObject:
   - component: {fileID: 7170753623420772817}
   - component: {fileID: 421209841852816654}
   - component: {fileID: 6954532415740137813}
+  - component: {fileID: 6756160749347485874}
   m_Layer: 0
   m_Name: LeftShoulder
   m_TagString: Untagged
@@ -3652,6 +3863,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &6756160749347485874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640281915479731016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d862db244c8c4b4bb4b3e7a7ed86d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTouchFloor: 0
 --- !u!1 &7744547702088886163
 GameObject:
   m_ObjectHideFlags: 0
@@ -3666,6 +3890,7 @@ GameObject:
   - component: {fileID: 6307167847323535340}
   - component: {fileID: 8722106858055108070}
   - component: {fileID: 6369104821999018855}
+  - component: {fileID: 1884161612434662728}
   m_Layer: 0
   m_Name: LeftHand
   m_TagString: Untagged
@@ -3863,6 +4088,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &1884161612434662728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7744547702088886163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d862db244c8c4b4bb4b3e7a7ed86d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTouchFloor: 0
 --- !u!1 &8883978935010732873
 GameObject:
   m_ObjectHideFlags: 0
@@ -3877,6 +4115,7 @@ GameObject:
   - component: {fileID: 189154981841910521}
   - component: {fileID: 7175664630459365842}
   - component: {fileID: 3098542657365346899}
+  - component: {fileID: 2306983362242991320}
   m_Layer: 0
   m_Name: LeftUpLeg
   m_TagString: Untagged
@@ -3970,7 +4209,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8883978935010732873}
   serializedVersion: 2
-  m_Mass: 8.382278
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -4074,3 +4313,16 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &2306983362242991320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8883978935010732873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d862db244c8c4b4bb4b3e7a7ed86d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTouchFloor: 0

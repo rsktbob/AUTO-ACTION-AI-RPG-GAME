@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1610123833981456930}
   m_Layer: 0
   m_Name: room1
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -223,10 +223,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 159
+    VectorObservationSize: 177
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 54
+      m_NumContinuousActions: 51
       BranchSizes: 01000000
     VectorActionSize: 
     VectorActionDescriptions: []
@@ -259,7 +259,7 @@ MonoBehaviour:
   robotPrefab: {fileID: 2113573993983117111, guid: e26521b363617754eba9e19ec71f0093, type: 3}
   InitPositionMinY: 5
   InitPositionMaxY: 5
-  rewardUpperLimit: 4.2
+  rewardUpperLimit: 3
 --- !u!114 &6028989597133099636
 MonoBehaviour:
   m_ObjectHideFlags: 0
