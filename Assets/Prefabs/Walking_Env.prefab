@@ -13,11 +13,9 @@ GameObject:
   - component: {fileID: 5788465533032316815}
   - component: {fileID: 300595666691376877}
   - component: {fileID: 6286649891635951581}
-  - component: {fileID: 6512629927964868375}
-  - component: {fileID: 1610123833981456930}
   m_Layer: 0
   m_Name: room1
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,32 +115,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.1666667, y: 1.9998524, z: 8.625445}
   m_Center: {x: 0, y: -0.000073075294, z: 0.14854318}
---- !u!65 &6512629927964868375
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5428032496318291546}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.08441107, y: 9.999998, z: 2.4004002}
-  m_Center: {x: 1.0411315, y: 3.999999, z: -0.19980003}
---- !u!65 &1610123833981456930
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5428032496318291546}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.08391794, y: 9.999998, z: 2.4004002}
-  m_Center: {x: -1.041378, y: 3.999999, z: -0.19980003}
 --- !u!1 &6028989596824957343
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,10 +195,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 159
+    VectorObservationSize: 157
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 54
+      m_NumContinuousActions: 45
       BranchSizes: 01000000
     VectorActionSize: 
     VectorActionDescriptions: []
@@ -259,7 +231,7 @@ MonoBehaviour:
   robotPrefab: {fileID: 2113573993983117111, guid: e26521b363617754eba9e19ec71f0093, type: 3}
   InitPositionMinY: 5
   InitPositionMaxY: 5
-  rewardUpperLimit: 4.2
+  rewardUpperLimit: 3
 --- !u!114 &6028989597133099636
 MonoBehaviour:
   m_ObjectHideFlags: 0
