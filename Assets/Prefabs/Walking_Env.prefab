@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 6028989597133099639}
   - component: {fileID: 6028989597133099638}
   - component: {fileID: 6028989597133099636}
+  - component: {fileID: 7785106978589109601}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
@@ -257,9 +258,7 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
   robotPrefab: {fileID: 2113573993983117111, guid: e26521b363617754eba9e19ec71f0093, type: 3}
-  InitPositionMinY: 5
-  InitPositionMaxY: 5
-  rewardUpperLimit: 4.2
+  rewardUpperLimit: 1
 --- !u!114 &6028989597133099636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,3 +273,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DecisionPeriod: 5
   TakeActionsBetweenDecisions: 1
+--- !u!114 &7785106978589109601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6028989597133099640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b6042bc9a5d4aa58d931eae49442e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0

@@ -7,11 +7,9 @@ using Unity.MLAgents.Actuators;
 using System;
 
 
-public class WalkMan1_Agent : Agent
+public class Walkman1_Agent : Agent
 {
     [SerializeField] private GameObject robotPrefab;
-    [SerializeField] private float InitPositionMinY;
-    [SerializeField] private float InitPositionMaxY;
     [SerializeField] private float rewardUpperLimit;
     private Walkman robot;
 
@@ -261,15 +259,15 @@ public class WalkMan1_Agent : Agent
         float LeftFootToHeadDistance = robot.Head.transform.localPosition.y - robot.LeftFoot.transform.localPosition.y;
         float RightFootToHeadDistance = robot.Head.transform.localPosition.y - robot.RightFoot.transform.localPosition.y;
 
+        AddReward(LeftFootToHeadDistance - 1);
+        AddReward(RightFootToHeadDistance - 1);
 
-        AddReward(LeftFootToHeadDistance-2);
-        AddReward(RightFootToHeadDistance - 2);
-        AddReward((40 - robot.Chest.transform.eulerAngles.x - robot.Chest.transform.eulerAngles.z)/30);
-        AddReward((40 - robot.Hip.transform.eulerAngles.x - robot.Hip.transform.eulerAngles.z) / 30);
-        // Height reward
-        //float heightReward = robot.Head.transform.localPosition.y - rewardUpperLimit;
-        //heightReward = heightReward > 0 ? (float)Math.Pow(20, heightReward) + heightReward : heightReward;
-        //AddReward(heightReward);
+        float eulerChestX = robot.Chest.transform.eulerAngles.x < 180 ? robot.Chest.transform.eulerAngles.x : 360 - robot.Chest.transform.eulerAngles.x;
+        float eulerChestZ = robot.Chest.transform.eulerAngles.z < 180 ? robot.Chest.transform.eulerAngles.z : 360 - robot.Chest.transform.eulerAngles.z;
+        float eulerHipX = robot.Hip.transform.eulerAngles.x < 180 ? robot.Hip.transform.eulerAngles.x : 360 - robot.Hip.transform.eulerAngles.x;
+        float eulerHipZ = robot.Hip.transform.eulerAngles.z < 180 ? robot.Hip.transform.eulerAngles.z : 360 - robot.Hip.transform.eulerAngles.z;
+        AddReward((90 - eulerChestX - eulerChestZ) / 80);
+        AddReward((90 - eulerHipX - eulerHipZ) / 80);
     }
 
 
