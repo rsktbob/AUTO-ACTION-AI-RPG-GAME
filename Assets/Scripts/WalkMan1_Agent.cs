@@ -6,6 +6,7 @@ using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
 using System;
 using Unity.Mathematics;
+using UnityEditor;
 
 public class WalkMan1_Agent : Agent
 {
@@ -14,12 +15,12 @@ public class WalkMan1_Agent : Agent
     [SerializeField] private float InitPositionMaxY;
     [SerializeField] private float rewardUpperLimit;
     private Walkman robot;
-
+    int isNowFootRight = 0;
     // reset the agent or remove it from the environment
     public override void OnEpisodeBegin()
     {
         InvokeRepeating("AddRewardToRobot", 0.5f, 0.5f); // add reward every 1 sec
-        InvokeRepeating("JudgeWhetherEnterNextEpisode", 6f, 6f); // judge next episode every 10 sec
+        InvokeRepeating("JudgeWhetherEnterNextEpisode", 20f, 20f); // judge next episode every 10 sec
         CreateNewRobot();
     }
 
@@ -252,16 +253,10 @@ public class WalkMan1_Agent : Agent
     //Add reward to robot
     private void AddRewardToRobot() 
     {
-        AddReward(robot.Hip.transform.localPosition.y > 2.25f ? 1 : 0);
-        AddReward(robot.Head.transform.localPosition.y > 2.9f ? 1 : 0);
-        //AddReward(robot.Hip.transform.localPosition.y - 1);
-        //AddReward(robot.Head.transform.localPosition.y - 1);
-        float eulerChestX = robot.Chest.transform.eulerAngles.x < 180 ? robot.Chest.transform.eulerAngles.x : 360 - robot.Chest.transform.eulerAngles.x;
-        float eulerChestZ = robot.Chest.transform.eulerAngles.z < 180 ? robot.Chest.transform.eulerAngles.z : 360 - robot.Chest.transform.eulerAngles.z;
-        float eulerHipX = robot.Hip.transform.eulerAngles.x < 180 ? robot.Hip.transform.eulerAngles.x : 360 - robot.Hip.transform.eulerAngles.x;
-        float eulerHipZ = robot.Hip.transform.eulerAngles.z < 180 ? robot.Hip.transform.eulerAngles.z : 360 - robot.Hip.transform.eulerAngles.z;
-        AddReward((90 - eulerChestX - eulerChestZ) / 120);
-        AddReward((90 - eulerHipX - eulerHipZ) / 120);
+        //AddReward(robot.Hip.transform.localPosition.y > 2.25f ? 1 : -1);
+        //AddReward(robot.Chest.transform.localPosition.y > 2.9f ? 1 : -1);
+        AddReward(robot.Hip.transform.localPosition.y - 1);
+        AddReward(robot.Chest.transform.localPosition.y - 1);
         /*float LeftFootToHeadDistance = robot.Head.transform.localPosition.y - robot.LeftFoot.transform.localPosition.y;
         float RightFootToHeadDistance = robot.Head.transform.localPosition.y - robot.RightFoot.transform.localPosition.y;
         float LeftFootToHipDistance = robot.Hip.transform.localPosition.y - robot.RightFoot.transform.localPosition.y;
@@ -270,7 +265,6 @@ public class WalkMan1_Agent : Agent
         AddReward((RightFootToHeadDistance - 1)*2);
         AddReward((LeftFootToHipDistance - 1) * 2);
         AddReward((RightFootToHipDistance - 1) * 2);
-
         
         float eulerHeadX = robot.Head.transform.eulerAngles.x < 180 ? robot.Head.transform.eulerAngles.x : 360 - robot.Head.transform.eulerAngles.x;
         float eulerHeadZ = robot.Head.transform.eulerAngles.z < 180 ? robot.Head.transform.eulerAngles.z : 360 - robot.Head.transform.eulerAngles.z;
@@ -310,7 +304,8 @@ public class WalkMan1_Agent : Agent
         {
             Destroy(robot.gameObject);
         }
-        robot = Instantiate(robotPrefab, new Vector3(transform.position.x, transform.position.y+ 0.6f, transform.position.z), new Quaternion(0,0,0,0)).GetComponent<Walkman>();
+        robot = Instantiate(robotPrefab, new Vector3(transform.position.x + 10f, transform.position.y+ 0.6f, transform.position.z), new Quaternion(0,0,0,0)).GetComponent<Walkman>();
+        robot.transform.eulerAngles = new Vector3(0, 90f, 0);
         robot.transform.parent = transform;
         
     }
@@ -320,15 +315,75 @@ public class WalkMan1_Agent : Agent
         return position - robot.Hip.transform.position;
     }
 
+    private Vector3 RelativeFloorPosition(Vector3 position)
+    {
+        return position - transform.position;
+    }
+
     // Judge whether enter next episode
     private void JudgeWhetherEnterNextEpisode()
     {
         float actualPositionY = robot.Head.transform.localPosition.y;
-        if (actualPositionY < rewardUpperLimit)
+        float actualPositionX = RelativeFloorPosition(robot.Hip.transform.position).x;
+        Debug.Log("restart");
+        if (actualPositionY < rewardUpperLimit || actualPositionX > -9)
         {
             CancelInvoke("AddRewardToRobot");
             CancelInvoke("JudgeWhetherEnterNextEpisode");
             EndEpisode();
+        }
+    }
+
+    public void leftFootTouch()
+    {
+        if(isNowFootRight == 0)
+        {
+            isNowFootRight = 1;
+            return;
+        }
+        if(isNowFootRight == -1)
+        {
+            if(robot.LeftFoot.transform.position.x < robot.RightFoot.transform.position.x & robot.Chest.transform.localPosition.y > 2.9f)
+            {
+                Debug.Log("left+");
+                AddReward(3);
+                isNowFootRight = 1;
+            }
+        }
+        else
+        {
+            if(robot.Chest.transform.localPosition.y > 2.9f)
+            {
+                AddReward(-5);
+                Debug.Log("left-");
+            }
+            
+        }
+    }
+
+    public void rightFootTouch()
+    {
+        if (isNowFootRight == 0)
+        {
+            isNowFootRight = -1;
+            return;
+        }
+        if (isNowFootRight == 1)
+        {
+            if (robot.RightFoot.transform.position.x < robot.LeftFoot.transform.position.x & robot.Chest.transform.localPosition.y > 2.9f)
+            {
+                Debug.Log("right+");
+                AddReward(3);
+                isNowFootRight = -1;
+            }
+        }
+        else
+        {
+            if (robot.Chest.transform.localPosition.y > 2.9f)
+            {
+                AddReward(-5);
+                Debug.Log("right-");
+            }
         }
     }
 }
