@@ -22,12 +22,10 @@ public class Walkman : MonoBehaviour
     public GameObject LeftUpLeg;
     public GameObject LeftLeg;
     public GameObject LeftFoot;
-    public GameObject LeftToe;
 
     public GameObject RightUpLeg;
     public GameObject RightLeg;
     public GameObject RightFoot;
-    public GameObject RightToe;
 
 
     // Start is called before the first frame update
