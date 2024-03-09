@@ -1,51 +1,117 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Walkman : MonoBehaviour
 {
-    public GameObject Head;
+    public Body Head;
 
+    public Body Chest;
+    public Body Waist;
+
+    public Body RightHand;
+    public Body RightArm;
+    public Body RightShoulder;
+
+    public Body LeftHand;
+    public Body LeftArm;
+    public Body LeftShoulder;
+
+    public Body Hips;
+    public Body LeftUpLeg;
+    public Body LeftLeg;
+    public Body LeftFoot;
+
+    public Body RightUpLeg;
+    public Body RightLeg;
+    public Body RightFoot;
     
-    public GameObject Chest;
-    public GameObject Waist;
+    int isNowFootRight = 0;
 
-    public GameObject RightHand;
-    public GameObject RightArm;
-    public GameObject RightShoulder;
-
-    public GameObject LeftHand;
-    public GameObject LeftArm;
-    public GameObject LeftShoulder;
-
-    public GameObject Hip;
-    public GameObject LeftUpLeg;
-    public GameObject LeftLeg;
-    public GameObject LeftFoot;
-
-    public GameObject RightUpLeg;
-    public GameObject RightLeg;
-    public GameObject RightFoot;
-
+    [HideInInspector]
+    public UnityEvent<float> RewardEvent;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        LeftFoot.CollisionEvent.AddListener(OnBodyCollision);
+        RightFoot.CollisionEvent.AddListener(OnBodyCollision);
+        Debug.Log(3);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void Move(Vector3 position)
+    // Notify the WalkmanAgent on body collision.
+    void OnBodyCollision(string bodyName)
     {
-        foreach (Transform childTransform in transform)
+        switch (bodyName)
         {
-            childTransform.localPosition = position;
+            case "LeftFoot":
+                OnLeftFootCollision();
+                break;
+            case "RightFoot":
+                OnRightFootCollision();
+                break;
         }
     }
 
+    // Notify the WalkmanAgent on leftFoot collision.
+    public void OnLeftFootCollision()
+    {
+        if (isNowFootRight == 0)
+        {
+            isNowFootRight = 1;
+            return;
+        }
+
+        if (isNowFootRight == -1)
+        {
+            if (Chest.transform.localPosition.y > 2.9f)
+            {
+                Debug.Log("left+");
+                isNowFootRight = 1;
+                RewardEvent.Invoke(RightFoot.transform.position.x - LeftFoot.transform.position.x);
+            }
+        }
+        else
+        {
+            if (Chest.transform.localPosition.y > 2.9f)
+            {
+                Debug.Log("left-");
+                RewardEvent.Invoke(-5);
+            }
+        }
+    }
+
+    // Notify the WalkmanAgent on rightFoot collision.
+    public void OnRightFootCollision()
+    {
+        if (isNowFootRight == 0)
+        {
+            isNowFootRight = -1;
+            return;
+        }
+        if (isNowFootRight == 1)
+        {
+            if (Chest.transform.localPosition.y > 2.9f)
+            {
+                Debug.Log("right+");
+                isNowFootRight = -1;
+                RewardEvent.Invoke(LeftFoot.transform.position.x - RightFoot.transform.position.x);
+            }
+        }
+        else
+        {
+            if (Chest.transform.localPosition.y > 2.9f)
+            {
+                Debug.Log("right-");
+                RewardEvent.Invoke(5);
+            }
+        }
+    }
 }

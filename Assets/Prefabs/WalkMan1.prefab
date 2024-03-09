@@ -225,6 +225,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
+  CollisionEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &449599887629572030
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,6 +453,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
+  CollisionEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1150251797076216881
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,6 +681,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
+  CollisionEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1377574256411950836
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,6 +909,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
+  CollisionEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1884168174395286371
 GameObject:
   m_ObjectHideFlags: 0
@@ -1057,22 +1069,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 011fee0cb5b9bea48ad14e364a4d254d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Head: {fileID: 3103756628592515043}
-  Chest: {fileID: 1150251797076216881}
-  Waist: {fileID: 4769931908683082651}
-  RightHand: {fileID: 5186516257974665639}
-  RightArm: {fileID: 5555538930888808246}
-  RightShoulder: {fileID: 5243190129032320546}
-  LeftHand: {fileID: 7744547702088886163}
-  LeftArm: {fileID: 372904389207695068}
-  LeftShoulder: {fileID: 6640281915479731016}
-  Hip: {fileID: 3997973301165327949}
-  LeftUpLeg: {fileID: 8883978935010732873}
-  LeftLeg: {fileID: 6493578565739132631}
-  LeftFoot: {fileID: 6547521274650835837}
-  RightUpLeg: {fileID: 449599887629572030}
-  RightLeg: {fileID: 1377574256411950836}
-  RightFoot: {fileID: 5262325608169345765}
+  Head: {fileID: 8915214710051455614}
+  Chest: {fileID: 5412212064634486839}
+  Waist: {fileID: 778386183405045095}
+  RightHand: {fileID: 602822141509669018}
+  RightArm: {fileID: 415430198050595556}
+  RightShoulder: {fileID: 198774558159378666}
+  LeftHand: {fileID: 1884161612434662728}
+  LeftArm: {fileID: 383658705768048525}
+  LeftShoulder: {fileID: 6756160749347485874}
+  Hips: {fileID: 7900942238146524169}
+  LeftUpLeg: {fileID: 2306983362242991320}
+  LeftLeg: {fileID: 2564897570813141774}
+  LeftFoot: {fileID: 4488370415729314447}
+  RightUpLeg: {fileID: 4742543258394645679}
+  RightLeg: {fileID: 3109121593284830482}
+  RightFoot: {fileID: 3645135264218452395}
+  bodies: []
+  RewardEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3103756628592515043
 GameObject:
   m_ObjectHideFlags: 0
@@ -1300,6 +1316,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
+  CollisionEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3997973301165327949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1316,7 +1335,7 @@ GameObject:
   - component: {fileID: 2792257501911942639}
   - component: {fileID: 7900942238146524169}
   m_Layer: 0
-  m_Name: Hip
+  m_Name: Hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1525,6 +1544,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
+  CollisionEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4769931908683082651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1750,6 +1772,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
+  CollisionEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5186516257974665639
 GameObject:
   m_ObjectHideFlags: 0
@@ -1975,6 +2000,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
+  CollisionEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5243190129032320546
 GameObject:
   m_ObjectHideFlags: 0
@@ -2200,6 +2228,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
+  CollisionEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5262325608169345765
 GameObject:
   m_ObjectHideFlags: 0
@@ -2425,6 +2456,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
+  CollisionEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5555538930888808246
 GameObject:
   m_ObjectHideFlags: 0
@@ -2650,6 +2684,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
+  CollisionEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6212186354352045735
 GameObject:
   m_ObjectHideFlags: 0
@@ -2972,6 +3009,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
+  CollisionEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6547521274650835837
 GameObject:
   m_ObjectHideFlags: 0
@@ -3197,6 +3237,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
+  CollisionEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6640281915479731016
 GameObject:
   m_ObjectHideFlags: 0
@@ -3422,6 +3465,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
+  CollisionEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7744547702088886163
 GameObject:
   m_ObjectHideFlags: 0
@@ -3647,6 +3693,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
+  CollisionEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8883978935010732873
 GameObject:
   m_ObjectHideFlags: 0
@@ -3872,3 +3921,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
+  CollisionEvent:
+    m_PersistentCalls:
+      m_Calls: []

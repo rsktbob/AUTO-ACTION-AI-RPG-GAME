@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.MLAgents;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class bodyCollision : MonoBehaviour
+public class Body : MonoBehaviour
 {
     public bool isTouchFloor = false;
-    private GameObject agent;
+    
+    [HideInInspector] 
+    public UnityEvent<string> CollisionEvent;
+
     private void Start()
     {
-        agent = transform.parent.gameObject.transform.parent.gameObject;
+
     }
     // Start is called before the first frame update
     private void OnCollisionEnter(Collision collision)
@@ -18,10 +23,7 @@ public class bodyCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("floor"))
         {
             isTouchFloor = true;
-            if (gameObject.name == "RightFoot")
-                agent.GetComponent<WalkMan1_Agent>().rightFootTouch();
-            if (gameObject.name == "LeftFoot")
-                agent.GetComponent<WalkMan1_Agent>().leftFootTouch();
+            CollisionEvent.Invoke(gameObject.name);
         }
     }
     private void OnCollisionExit(Collision collision)
@@ -30,6 +32,5 @@ public class bodyCollision : MonoBehaviour
         {
             isTouchFloor = false;
         }
-
     }
 }

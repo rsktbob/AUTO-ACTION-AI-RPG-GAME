@@ -126,7 +126,7 @@ public class RobotAgent : Agent
         return position - robot.body.transform.position;
     }
 
-    //Add reward to robot
+    // Add reward to robot
     private void AddRewardToRobot()
     {   
         float leftFootToHeadDistance = robot.head.transform.localPosition.y - robot.leftFoot.transform.localPosition.y;
