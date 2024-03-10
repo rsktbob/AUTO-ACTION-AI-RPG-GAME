@@ -29,6 +29,10 @@ public class bodyCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("floor"))
         {
             isTouchFloor = false;
+            if (gameObject.name == "RightFoot")
+                agent.GetComponent<WalkMan1_Agent>().rightFootLeave();
+            if (gameObject.name == "LeftFoot")
+                agent.GetComponent<WalkMan1_Agent>().leftFootLeave();
         }
 
     }
