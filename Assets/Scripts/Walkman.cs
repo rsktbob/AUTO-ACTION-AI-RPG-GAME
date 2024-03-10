@@ -26,7 +26,7 @@ public class Walkman : MonoBehaviour
     public Body RightUpLeg;
     public Body RightLeg;
     public Body RightFoot;
-    
+
     int isNowFootRight = 0;
 
     [HideInInspector]
@@ -37,7 +37,6 @@ public class Walkman : MonoBehaviour
     {
         LeftFoot.CollisionEvent.AddListener(OnBodyCollision);
         RightFoot.CollisionEvent.AddListener(OnBodyCollision);
-        Debug.Log(3);
     }
 
     // Update is called once per frame
@@ -47,7 +46,7 @@ public class Walkman : MonoBehaviour
     }
 
     // Notify the WalkmanAgent on body collision.
-    void OnBodyCollision(string bodyName)
+    public void OnBodyCollision(string bodyName)
     {
         switch (bodyName)
         {

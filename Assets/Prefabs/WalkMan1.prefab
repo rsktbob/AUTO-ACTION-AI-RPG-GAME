@@ -1085,7 +1085,6 @@ MonoBehaviour:
   RightUpLeg: {fileID: 4742543258394645679}
   RightLeg: {fileID: 3109121593284830482}
   RightFoot: {fileID: 3645135264218452395}
-  bodies: []
   RewardEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -3239,7 +3238,19 @@ MonoBehaviour:
   isTouchFloor: 0
   CollisionEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2113573993983117111}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6640281915479731016
 GameObject:
   m_ObjectHideFlags: 0
