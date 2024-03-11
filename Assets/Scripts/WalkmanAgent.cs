@@ -253,10 +253,10 @@ public class WalkmanAgent : Agent
     //Add reward to robot
     private void AddRewardToRobot() 
     {
-        AddReward(robot.Hips.transform.localPosition.y > 2.25f ? 2f : -4);
-        AddReward(robot.Chest.transform.localPosition.y > 2.9f ? 2f : -4);
-        //AddReward(robot.Hips.transform.localPosition.y - 1);
-        //AddReward(robot.Chest.transform.localPosition.y - 1);
+        //AddReward(robot.Hips.transform.localPosition.y > 2.25f ? 2f : -4);
+        //AddReward(robot.Chest.transform.localPosition.y > 2.9f ? 2f : -4);
+        AddReward(robot.Hips.transform.localPosition.y - 0.7f);
+        AddReward(robot.Chest.transform.localPosition.y - 0.7f);
         //float eulerHipX = robot.Head.transform.eulerAngles.x < 180 ? robot.Head.transform.eulerAngles.x : 360 - robot.Head.transform.eulerAngles.x;
         //float eulerHipZ = robot.Head.transform.eulerAngles.z < 180 ? robot.Head.transform.eulerAngles.z : 360 - robot.Head.transform.eulerAngles.z;
         //AddReward((90 - eulerHipX - eulerHipZ) / 80);
@@ -315,7 +315,7 @@ public class WalkmanAgent : Agent
         {
             Destroy(robot.gameObject);
         }
-        robot = Instantiate(robotPrefab, new Vector3(transform.position.x + 30f, transform.position.y+ 1.6f, transform.position.z), new Quaternion(0,0,0,0)).GetComponent<Walkman>();
+        robot = Instantiate(robotPrefab, new Vector3(transform.position.x + 10f, transform.position.y - 1f, transform.position.z), new Quaternion(0,0,0,0)).GetComponent<Walkman>();
         robot.transform.eulerAngles = new Vector3(0, 90f, 0);
         robot.transform.parent = transform;
         robot.RewardEvent.AddListener(AddReward);
@@ -350,7 +350,7 @@ public class WalkmanAgent : Agent
         float actualPositionX = RelativeFloorPosition(robot.Hips.transform.position).x;
         //AddReward(10 - RelativeFloorPosition(robot.LeftFoot.transform.position).x);
         //AddReward(10 - RelativeFloorPosition(robot.RightFoot.transform.position).x);
-        if (actualPositionX > -27)
+        if (actualPositionX > -9)
         {
             CancelInvoke("AddRewardToRobot");
             CancelInvoke("JudgeWhetherEnterNextEpisode");

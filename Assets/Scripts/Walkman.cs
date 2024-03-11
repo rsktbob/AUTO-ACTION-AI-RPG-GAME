@@ -107,7 +107,7 @@ public class Walkman : MonoBehaviour
 
     public void OnRightFootCollisionLeave()
     {
-        if (LeftFoot.isTouchFloor & Chest.transform.localPosition.y > 2.9f & footstate == FootState.Right)
+        if (LeftFoot.isTouchFloor & Chest.transform.localPosition.y > 2.5f & footstate == FootState.Right)
         {
             Debug.Log("rightup");
             RewardEvent.Invoke(20);
@@ -116,7 +116,7 @@ public class Walkman : MonoBehaviour
 
     public void OnLeftFootCollisionLeave()
     {
-        if (RightFoot.isTouchFloor & Chest.transform.localPosition.y > 2.9f & footstate == FootState.Left)
+        if (RightFoot.isTouchFloor & Chest.transform.localPosition.y > 2.5f & footstate == FootState.Left)
         {
             Debug.Log("leftforward");
             RewardEvent.Invoke(20);
