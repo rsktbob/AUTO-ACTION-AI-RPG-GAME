@@ -11,8 +11,6 @@ using UnityEditor;
 public class WalkmanAgent : Agent
 {
     [SerializeField] private GameObject robotPrefab;
-    [SerializeField] private float InitPositionMinY;
-    [SerializeField] private float InitPositionMaxY;
     [SerializeField] private float rewardUpperLimit;
     private Walkman robot;
 
@@ -231,7 +229,7 @@ public class WalkmanAgent : Agent
         sensor.AddObservation(robot.Head.GetComponent<Rigidbody>().velocity); // velocity
         sensor.AddObservation(robot.Head.GetComponent<Rigidbody>().angularVelocity); // angular velocity
 
-        //is touch floor
+        ////is touch floor
         sensor.AddObservation(robot.LeftUpLeg.isTouchFloor);
         sensor.AddObservation(robot.LeftLeg.isTouchFloor);
         sensor.AddObservation(robot.LeftFoot.isTouchFloor);
@@ -274,7 +272,7 @@ public class WalkmanAgent : Agent
             Destroy(robot.gameObject);
         }
         robot = Instantiate(robotPrefab, new Vector3(transform.position.x + 10f, transform.position.y+ 0.6f, transform.position.z), new Quaternion(0,0,0,0)).GetComponent<Walkman>();
-        robot.transform.eulerAngles = new Vector3(0, 90f, 0);
+        robot.transform.eulerAngles = new Vector3(0, -90f, 0);
         robot.transform.parent = transform;
         robot.RewardEvent.AddListener(AddReward);
     }

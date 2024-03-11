@@ -7,9 +7,10 @@ using UnityEngine.Events;
 
 public class Body : MonoBehaviour
 {
+    [HideInInspector]
     public bool isTouchFloor = false;
-    
-    [HideInInspector] 
+
+    [Header("Event")]
     public UnityEvent<string> CollisionEvent;
 
     private void Start()

@@ -35,8 +35,7 @@ public class Walkman : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LeftFoot.CollisionEvent.AddListener(OnBodyCollision);
-        RightFoot.CollisionEvent.AddListener(OnBodyCollision);
+
     }
 
     // Update is called once per frame
