@@ -137,7 +137,7 @@ public class WalkmanAgent : Agent
         robot.RightArm.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.RightArm.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetRightArmAngularVelocity.x, -10f, 10f), Mathf.Clamp(robot.RightArm.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetRightArmAngularVelocity.y, -4f, 4f), Mathf.Clamp(robot.RightArm.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetRightArmAngularVelocity.z, -10f, 10f));
         robot.RightHand.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.RightHand.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetRightHandAngularVelocity.x, -10f, 10f), Mathf.Clamp(robot.RightHand.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetRightHandAngularVelocity.y, -4f, 4f), Mathf.Clamp(robot.RightHand.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetRightHandAngularVelocity.z, -10f, 10f));
 
-        robot.Hip.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.Hip.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetHipAngularVelocity.x, -20f, 20f), Mathf.Clamp(robot.Hip.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetHipAngularVelocity.y, -4f, 4f), Mathf.Clamp(robot.Hip.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetHipAngularVelocity.z, -20f, 20f));
+        robot.Hips.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.Hips.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetHipAngularVelocity.x, -20f, 20f), Mathf.Clamp(robot.Hips.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetHipAngularVelocity.y, -4f, 4f), Mathf.Clamp(robot.Hips.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetHipAngularVelocity.z, -20f, 20f));
 
         robot.Waist.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.Waist.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetWaistAngularVelocity.x, -10f, 10f), Mathf.Clamp(robot.Waist.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetWaistAngularVelocity.y, -20f, 20f), Mathf.Clamp(robot.Waist.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetWaistAngularVelocity.z, -20f, 20f));
         robot.Chest.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.Chest.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetWaistAngularVelocity.x, -10f, 10f), Mathf.Clamp(robot.Chest.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetWaistAngularVelocity.y, -20f, 20f), Mathf.Clamp(robot.Chest.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetWaistAngularVelocity.z, -20f, 20f));
@@ -253,10 +253,10 @@ public class WalkmanAgent : Agent
     //Add reward to robot
     private void AddRewardToRobot() 
     {
-        //AddReward(robot.Hip.transform.localPosition.y > 2.25f ? 0.5f : -1);
-        //AddReward(robot.Chest.transform.localPosition.y > 2.9f ? 0.5f : -1);
-        AddReward(robot.Hip.transform.localPosition.y - 1);
-        AddReward(robot.Chest.transform.localPosition.y - 1);
+        AddReward(robot.Hips.transform.localPosition.y > 2.25f ? 2f : -4);
+        AddReward(robot.Chest.transform.localPosition.y > 2.9f ? 2f : -4);
+        //AddReward(robot.Hips.transform.localPosition.y - 1);
+        //AddReward(robot.Chest.transform.localPosition.y - 1);
         //float eulerHipX = robot.Head.transform.eulerAngles.x < 180 ? robot.Head.transform.eulerAngles.x : 360 - robot.Head.transform.eulerAngles.x;
         //float eulerHipZ = robot.Head.transform.eulerAngles.z < 180 ? robot.Head.transform.eulerAngles.z : 360 - robot.Head.transform.eulerAngles.z;
         //AddReward((90 - eulerHipX - eulerHipZ) / 80);
@@ -315,7 +315,7 @@ public class WalkmanAgent : Agent
         {
             Destroy(robot.gameObject);
         }
-        robot = Instantiate(robotPrefab, new Vector3(transform.position.x + 10f, transform.position.y+ 0.6f, transform.position.z), new Quaternion(0,0,0,0)).GetComponent<Walkman>();
+        robot = Instantiate(robotPrefab, new Vector3(transform.position.x + 30f, transform.position.y+ 1.6f, transform.position.z), new Quaternion(0,0,0,0)).GetComponent<Walkman>();
         robot.transform.eulerAngles = new Vector3(0, 90f, 0);
         robot.transform.parent = transform;
         robot.RewardEvent.AddListener(AddReward);
@@ -347,10 +347,10 @@ public class WalkmanAgent : Agent
 
     private void JudgeWhetherEnterNextEpisode2()
     {
-        float actualPositionX = RelativeFloorPosition(robot.Hip.transform.position).x;
+        float actualPositionX = RelativeFloorPosition(robot.Hips.transform.position).x;
         //AddReward(10 - RelativeFloorPosition(robot.LeftFoot.transform.position).x);
         //AddReward(10 - RelativeFloorPosition(robot.RightFoot.transform.position).x);
-        if (actualPositionX < -9)
+        if (actualPositionX > -27)
         {
             CancelInvoke("AddRewardToRobot");
             CancelInvoke("JudgeWhetherEnterNextEpisode");

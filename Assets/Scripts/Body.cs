@@ -10,7 +10,8 @@ public class Body : MonoBehaviour
     public bool isTouchFloor = false;
     
     [HideInInspector] 
-    public UnityEvent<string> CollisionEvent;
+    public UnityEvent<string> CollisionEnterEvent;
+    public UnityEvent<string> CollisionLeaveEvent;
 
     private void Start()
     {
@@ -23,7 +24,7 @@ public class Body : MonoBehaviour
         if (collision.gameObject.CompareTag("floor"))
         {
             isTouchFloor = true;
-            CollisionEvent.Invoke(gameObject.name);
+            CollisionEnterEvent.Invoke(gameObject.name);
         }
     }
     private void OnCollisionExit(Collision collision)
@@ -31,10 +32,8 @@ public class Body : MonoBehaviour
         if (collision.gameObject.CompareTag("floor"))
         {
             isTouchFloor = false;
-            if (gameObject.name == "RightFoot")
-                agent.GetComponent<WalkMan1_Agent>().rightFootLeave();
-            if (gameObject.name == "LeftFoot")
-                agent.GetComponent<WalkMan1_Agent>().leftFootLeave();
+            CollisionLeaveEvent.Invoke(gameObject.name);
         }
     }
 }
+
