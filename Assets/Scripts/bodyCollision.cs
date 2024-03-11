@@ -18,10 +18,10 @@ public class bodyCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("floor"))
         {
             isTouchFloor = true;
-            if (gameObject.name == "RightFoot")
-                agent.GetComponent<WalkMan1_Agent>().rightFootTouch();
-            if (gameObject.name == "LeftFoot")
-                agent.GetComponent<WalkMan1_Agent>().leftFootTouch();
+            //if (gameObject.name == "RightFoot")
+                //agent.GetComponent<WalkMan1_Agent>().rightFootTouch();
+            //if (gameObject.name == "LeftFoot")
+                //agent.GetComponent<WalkMan1_Agent>().leftFootTouch();
         }
     }
     private void OnCollisionExit(Collision collision)
@@ -29,10 +29,10 @@ public class bodyCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("floor"))
         {
             isTouchFloor = false;
-            if (gameObject.name == "RightFoot")
-                agent.GetComponent<WalkMan1_Agent>().rightFootLeave();
-            if (gameObject.name == "LeftFoot")
-                agent.GetComponent<WalkMan1_Agent>().leftFootLeave();
+            //if (gameObject.name == "RightFoot")
+                //agent.GetComponent<WalkMan1_Agent>().rightFootLeave();
+            //if (gameObject.name == "LeftFoot")
+                //agent.GetComponent<WalkMan1_Agent>().leftFootLeave();
         }
 
     }

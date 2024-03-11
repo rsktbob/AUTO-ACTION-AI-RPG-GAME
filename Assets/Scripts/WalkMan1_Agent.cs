@@ -316,7 +316,7 @@ public class WalkMan1_Agent : Agent
         {
             Destroy(robot.gameObject);
         }
-        robot = Instantiate(robotPrefab, new Vector3(transform.position.x + 10f, transform.position.y+ 0.6f, transform.position.z), new Quaternion(0,0,0,0)).GetComponent<Walkman>();
+        robot = Instantiate(robotPrefab, new Vector3(transform.position.x + 30f, transform.position.y+ 0.6f, transform.position.z), new Quaternion(0,0,0,0)).GetComponent<Walkman>();
         robot.transform.eulerAngles = new Vector3(0, 90f, 0);
         robot.transform.parent = transform;
         
@@ -350,7 +350,7 @@ public class WalkMan1_Agent : Agent
         float actualPositionX = RelativeFloorPosition(robot.Hip.transform.position).x;
         //AddReward(10 - RelativeFloorPosition(robot.LeftFoot.transform.position).x);
         //AddReward(10 - RelativeFloorPosition(robot.RightFoot.transform.position).x);
-        if (actualPositionX < -9)
+        if (actualPositionX < -27)
         {
             CancelInvoke("AddRewardToRobot");
             CancelInvoke("JudgeWhetherEnterNextEpisode");
