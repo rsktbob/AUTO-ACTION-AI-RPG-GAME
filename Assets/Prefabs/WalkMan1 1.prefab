@@ -29,14 +29,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 372904389207695068}
-  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 1.7800008, y: 3.9330008, z: 0}
-  m_LocalScale: {x: 0.24578664, y: 0.69618154, z: 0.24578676}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.22813, y: 2.4108, z: -0.076378}
+  m_LocalScale: {x: 0.08161541, y: 0.23117264, z: 0.08161545}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2113573993983117110}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5242413248613950120
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -125,7 +125,7 @@ ConfigurableJoint:
   m_GameObject: {fileID: 372904389207695068}
   m_ConnectedBody: {fileID: 421209841852816654}
   m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: -0.57, z: 0}
+  m_Anchor: {x: 0, y: 0.55, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
@@ -148,11 +148,11 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LowAngularXLimit:
-    limit: 0
+    limit: -130
     bounciness: 0
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 130
+    limit: 0
     bounciness: 0
     contactDistance: 0
   m_AngularYZLimitSpring:
@@ -189,12 +189,12 @@ ConfigurableJoint:
   m_AngularXDrive:
     serializedVersion: 3
     positionSpring: 0
-    positionDamper: 100
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
     positionSpring: 0
-    positionDamper: 100
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -225,7 +225,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
-  CollisionEvent:
+  CollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  CollisionLeaveEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &449599887629572030
@@ -257,14 +260,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 449599887629572030}
-  m_LocalRotation: {x: -0, y: -0, z: -0.10167458, w: 0.9948177}
-  m_LocalPosition: {x: -0.398, y: 2.065, z: 0}
-  m_LocalScale: {x: 0.386978, y: 1.0328587, z: 0.39716986}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.09962, y: 2.198, z: -0.076378}
+  m_LocalScale: {x: 0.12849914, y: 0.34296897, z: 0.13188343}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2113573993983117110}
   m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -11.671}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7616876241399690426
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -380,7 +383,7 @@ ConfigurableJoint:
     bounciness: 0
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 0
+    limit: 30
     bounciness: 0
     contactDistance: 0
   m_AngularYZLimitSpring:
@@ -391,7 +394,7 @@ ConfigurableJoint:
     bounciness: 0
     contactDistance: 0
   m_AngularZLimit:
-    limit: 60
+    limit: 35
     bounciness: 0
     contactDistance: 0
   m_TargetPosition: {x: 0, y: 0, z: 0}
@@ -416,13 +419,13 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 0
-    positionDamper: 100
+    positionSpring: 400
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 1
-    positionDamper: 100
+    positionSpring: 200
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -453,7 +456,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
-  CollisionEvent:
+  CollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  CollisionLeaveEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1150251797076216881
@@ -486,8 +492,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1150251797076216881}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.7680004, z: 0}
-  m_LocalScale: {x: 1, y: 0.6, z: 0.6774002}
+  m_LocalPosition: {x: 0, y: 2.7466, z: -0.076378}
+  m_LocalScale: {x: 0.33205795, y: 0.1992348, z: 0.22493613}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2113573993983117110}
@@ -644,13 +650,13 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 40
-    positionDamper: 100
+    positionSpring: 30
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 0
-    positionDamper: 100
+    positionSpring: 200
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -664,7 +670,7 @@ ConfigurableJoint:
   m_SwapBodies: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
@@ -681,7 +687,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
-  CollisionEvent:
+  CollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  CollisionLeaveEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1377574256411950836
@@ -713,14 +722,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377574256411950836}
-  m_LocalRotation: {x: -0, y: -0, z: -0.10167458, w: 0.9948177}
-  m_LocalPosition: {x: -0.6367112, y: 0.90939367, z: 0.008000003}
-  m_LocalScale: {x: 0.31459638, y: 1.1693707, z: 0.38216376}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.09962, y: 1.8143001, z: -0.073722}
+  m_LocalScale: {x: 0.10446425, y: 0.38829887, z: 0.12690052}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2113573993983117110}
   m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -11.671}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3306647357708359318
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -872,13 +881,13 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 0
-    positionDamper: 100
+    positionSpring: 100
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
     positionSpring: 0
-    positionDamper: 100
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -909,7 +918,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
-  CollisionEvent:
+  CollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  CollisionLeaveEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1884168174395286371
@@ -1020,7 +1032,7 @@ GameObject:
   - component: {fileID: 2113573993983117110}
   - component: {fileID: 3873594806708116089}
   m_Layer: 0
-  m_Name: WalkMan1
+  m_Name: WalkMan1 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1034,8 +1046,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2113573993983117111}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.38, y: 0.38, z: 0.38}
+  m_LocalPosition: {x: 0, y: -1.513, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6827034263987154135}
@@ -1118,8 +1130,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3103756628592515043}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.430001, z: 0}
-  m_LocalScale: {x: 0.47160962, y: 0.56092584, z: 0.4716097}
+  m_LocalPosition: {x: 0, y: 2.9663997, z: -0.076378}
+  m_LocalScale: {x: 0.15660174, y: 0.1862599, z: 0.15660177}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1596470437933309448}
@@ -1278,13 +1290,13 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 30
-    positionDamper: 100
+    positionSpring: 100
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 30
-    positionDamper: 100
+    positionSpring: 100
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -1315,7 +1327,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
-  CollisionEvent:
+  CollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  CollisionLeaveEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &3997973301165327949
@@ -1334,7 +1349,7 @@ GameObject:
   - component: {fileID: 2792257501911942639}
   - component: {fileID: 7900942238146524169}
   m_Layer: 0
-  m_Name: Hips
+  m_Name: Hip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1348,8 +1363,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3997973301165327949}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.88, z: 0}
-  m_LocalScale: {x: 0.9603632, y: 0.468294, z: 0.6}
+  m_LocalPosition: {x: 0, y: 2.4686, z: -0.076378}
+  m_LocalScale: {x: 0.31889626, y: 0.15550077, z: 0.1992348}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2113573993983117110}
@@ -1426,7 +1441,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3997973301165327949}
   serializedVersion: 2
-  m_Mass: 20
+  m_Mass: 13
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -1506,13 +1521,13 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 100
-    positionDamper: 100
+    positionSpring: 500
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
     positionSpring: 0
-    positionDamper: 100
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -1543,7 +1558,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
-  CollisionEvent:
+  CollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  CollisionLeaveEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &4769931908683082651
@@ -1576,8 +1594,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4769931908683082651}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.29, z: -0.0070000007}
-  m_LocalScale: {x: 0.7980614, y: 0.18631303, z: 0.5068249}
+  m_LocalPosition: {x: 0, y: 2.5944998, z: -0.078702}
+  m_LocalScale: {x: 0.2708592, y: 0.06691213, z: 0.16829525}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2113573993983117110}
@@ -1734,13 +1752,13 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 50
-    positionDamper: 100
+    positionSpring: 30
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 0
-    positionDamper: 100
+    positionSpring: 200
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -1754,7 +1772,7 @@ ConfigurableJoint:
   m_SwapBodies: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
@@ -1771,7 +1789,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
-  CollisionEvent:
+  CollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  CollisionLeaveEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &5186516257974665639
@@ -1803,14 +1824,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5186516257974665639}
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -2.3300004, y: 3.9330015, z: 0}
-  m_LocalScale: {x: 0.2457866, y: 0.2457866, z: 0.24578677}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.22381, y: 2.2316, z: -0.076378}
+  m_LocalScale: {x: 0.08161541, y: 0.08161541, z: 0.081615455}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2113573993983117110}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3644076961268592700
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1899,7 +1920,7 @@ ConfigurableJoint:
   m_GameObject: {fileID: 5186516257974665639}
   m_ConnectedBody: {fileID: 3901080200589995932}
   m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: -0.67, z: 0}
+  m_Anchor: {x: 0, y: 0.67, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
@@ -1922,11 +1943,11 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LowAngularXLimit:
-    limit: -70
+    limit: -15
     bounciness: 0
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 15
+    limit: 70
     bounciness: 0
     contactDistance: 0
   m_AngularYZLimitSpring:
@@ -1963,12 +1984,12 @@ ConfigurableJoint:
   m_AngularXDrive:
     serializedVersion: 3
     positionSpring: 0
-    positionDamper: 100
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
     positionSpring: 0
-    positionDamper: 100
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -1999,7 +2020,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
-  CollisionEvent:
+  CollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  CollisionLeaveEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &5243190129032320546
@@ -2031,14 +2055,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5243190129032320546}
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.9600003, y: 3.9330013, z: 0}
-  m_LocalScale: {x: 0.2737007, y: 0.765864, z: 0.27370077}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.22381, y: 2.6741998, z: -0.076378}
+  m_LocalScale: {x: 0.09088451, y: 0.25431123, z: 0.09088452}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2113573993983117110}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3142892661553946670
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2127,7 +2151,7 @@ ConfigurableJoint:
   m_GameObject: {fileID: 5243190129032320546}
   m_ConnectedBody: {fileID: 1093979688466553884}
   m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: -0.5, z: 0}
+  m_Anchor: {x: 0, y: 0.5, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: -0.57706785, y: 0, z: 0}
@@ -2150,11 +2174,11 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LowAngularXLimit:
-    limit: -90
+    limit: -177
     bounciness: 0
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 130
+    limit: 90
     bounciness: 0
     contactDistance: 0
   m_AngularYZLimitSpring:
@@ -2191,12 +2215,12 @@ ConfigurableJoint:
   m_AngularXDrive:
     serializedVersion: 3
     positionSpring: 0
-    positionDamper: 100
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
     positionSpring: 0
-    positionDamper: 100
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -2227,7 +2251,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
-  CollisionEvent:
+  CollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  CollisionLeaveEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &5262325608169345765
@@ -2259,14 +2286,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5262325608169345765}
-  m_LocalRotation: {x: -0, y: -0, z: -0.10167458, w: 0.9948177}
-  m_LocalPosition: {x: -0.7924801, y: 0.15531097, z: -0.15700017}
-  m_LocalScale: {x: 0.3485934, y: 0.20463988, z: 0.8207826}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.09962, y: 1.5639, z: -0.12852}
+  m_LocalScale: {x: 0.115753226, y: 0.0679523, z: 0.27254742}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2113573993983117110}
   m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -11.671}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9120684574460079169
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2418,13 +2445,13 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 0
-    positionDamper: 10
+    positionSpring: 200
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 0
-    positionDamper: 10
+    positionSpring: 30
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -2455,7 +2482,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
-  CollisionEvent:
+  CollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  CollisionLeaveEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &5555538930888808246
@@ -2487,14 +2517,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5555538930888808246}
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -1.7800008, y: 3.9330013, z: 0}
-  m_LocalScale: {x: 0.24578664, y: 0.69618154, z: 0.24578676}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.22381, y: 2.4108, z: -0.076378}
+  m_LocalScale: {x: 0.08161541, y: 0.23117264, z: 0.08161545}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2113573993983117110}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7200621440262526688
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2583,7 +2613,7 @@ ConfigurableJoint:
   m_GameObject: {fileID: 5555538930888808246}
   m_ConnectedBody: {fileID: 64873641190556284}
   m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: -0.57, z: 0}
+  m_Anchor: {x: 0, y: 0.55, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
@@ -2606,11 +2636,11 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LowAngularXLimit:
-    limit: 0
+    limit: -130
     bounciness: 0
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 130
+    limit: 0
     bounciness: 0
     contactDistance: 0
   m_AngularYZLimitSpring:
@@ -2647,12 +2677,12 @@ ConfigurableJoint:
   m_AngularXDrive:
     serializedVersion: 3
     positionSpring: 0
-    positionDamper: 100
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
     positionSpring: 0
-    positionDamper: 100
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -2683,7 +2713,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
-  CollisionEvent:
+  CollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  CollisionLeaveEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &6212186354352045735
@@ -2812,14 +2845,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6493578565739132631}
-  m_LocalRotation: {x: 0, y: 0, z: 0.1016727, w: 0.9948179}
-  m_LocalPosition: {x: 0.6367112, y: 0.9093937, z: 0.008000003}
-  m_LocalScale: {x: 0.3145922, y: 1.1693707, z: 0.3821687}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.09962, y: 1.8143001, z: -0.073722}
+  m_LocalScale: {x: 0.104462855, y: 0.38829887, z: 0.12690216}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2113573993983117110}
   m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 11.671}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8967988456759033515
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2971,13 +3004,13 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 0
-    positionDamper: 100
+    positionSpring: 100
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
     positionSpring: 0
-    positionDamper: 100
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -3008,7 +3041,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
-  CollisionEvent:
+  CollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  CollisionLeaveEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &6547521274650835837
@@ -3040,14 +3076,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6547521274650835837}
-  m_LocalRotation: {x: 0, y: 0, z: 0.1016727, w: 0.9948179}
-  m_LocalPosition: {x: 0.7924801, y: 0.155311, z: -0.1570002}
-  m_LocalScale: {x: 0.3485934, y: 0.20463988, z: 0.8207933}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.09962, y: 1.5639, z: -0.12852}
+  m_LocalScale: {x: 0.115753226, y: 0.0679523, z: 0.27255097}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2113573993983117110}
   m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 11.671}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9006151580339187732
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3199,13 +3235,13 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 0
-    positionDamper: 10
+    positionSpring: 200
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 0
-    positionDamper: 10
+    positionSpring: 30
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -3236,21 +3272,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
-  CollisionEvent:
+  CollisionEnterEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2113573993983117111}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  CollisionLeaveEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6640281915479731016
 GameObject:
   m_ObjectHideFlags: 0
@@ -3280,14 +3307,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6640281915479731016}
-  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.9600003, y: 3.9330006, z: 0}
-  m_LocalScale: {x: 0.2737007, y: 0.765864, z: 0.27370077}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.22381, y: 2.6741998, z: -0.076378}
+  m_LocalScale: {x: 0.09088451, y: 0.25431123, z: 0.09088452}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2113573993983117110}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6776311642311852011
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3376,7 +3403,7 @@ ConfigurableJoint:
   m_GameObject: {fileID: 6640281915479731016}
   m_ConnectedBody: {fileID: 1093979688466553884}
   m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: -0.5, z: 0}
+  m_Anchor: {x: 0, y: 0.5, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0.57706785, y: 0, z: 0}
@@ -3399,11 +3426,11 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LowAngularXLimit:
-    limit: -90
+    limit: -177
     bounciness: 0
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 130
+    limit: 90
     bounciness: 0
     contactDistance: 0
   m_AngularYZLimitSpring:
@@ -3440,12 +3467,12 @@ ConfigurableJoint:
   m_AngularXDrive:
     serializedVersion: 3
     positionSpring: 0
-    positionDamper: 100
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
     positionSpring: 0
-    positionDamper: 100
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -3476,7 +3503,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
-  CollisionEvent:
+  CollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  CollisionLeaveEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &7744547702088886163
@@ -3508,14 +3538,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7744547702088886163}
-  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 2.3300004, y: 3.9330013, z: 0}
-  m_LocalScale: {x: 0.2457866, y: 0.2457866, z: 0.24578677}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.22813, y: 2.2316, z: -0.076378}
+  m_LocalScale: {x: 0.08161541, y: 0.08161541, z: 0.081615455}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2113573993983117110}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6113419888320765961
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3604,7 +3634,7 @@ ConfigurableJoint:
   m_GameObject: {fileID: 7744547702088886163}
   m_ConnectedBody: {fileID: 7908211749105540475}
   m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: -0.67, z: 0}
+  m_Anchor: {x: 0, y: 0.67, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
@@ -3627,11 +3657,11 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LowAngularXLimit:
-    limit: -70
+    limit: -15
     bounciness: 0
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 15
+    limit: 70
     bounciness: 0
     contactDistance: 0
   m_AngularYZLimitSpring:
@@ -3668,12 +3698,12 @@ ConfigurableJoint:
   m_AngularXDrive:
     serializedVersion: 3
     positionSpring: 0
-    positionDamper: 100
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
     positionSpring: 0
-    positionDamper: 100
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -3704,7 +3734,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
-  CollisionEvent:
+  CollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  CollisionLeaveEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &8883978935010732873
@@ -3736,14 +3769,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8883978935010732873}
-  m_LocalRotation: {x: 0, y: 0, z: 0.1016727, w: 0.9948179}
-  m_LocalPosition: {x: 0.398, y: 2.065, z: 0}
-  m_LocalScale: {x: 0.38697794, y: 1.0328587, z: 0.39716986}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.09962, y: 2.198, z: -0.076378}
+  m_LocalScale: {x: 0.1284991, y: 0.34296897, z: 0.13188343}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2113573993983117110}
   m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 11.671}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &738167771525683648
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3859,7 +3892,7 @@ ConfigurableJoint:
     bounciness: 0
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 0
+    limit: 30
     bounciness: 0
     contactDistance: 0
   m_AngularYZLimitSpring:
@@ -3870,7 +3903,7 @@ ConfigurableJoint:
     bounciness: 0
     contactDistance: 0
   m_AngularZLimit:
-    limit: 60
+    limit: 35
     bounciness: 0
     contactDistance: 0
   m_TargetPosition: {x: 0, y: 0, z: 0}
@@ -3895,13 +3928,13 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 0
-    positionDamper: 100
+    positionSpring: 400
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 1
-    positionDamper: 100
+    positionSpring: 200
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -3932,6 +3965,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchFloor: 0
-  CollisionEvent:
+  CollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  CollisionLeaveEvent:
     m_PersistentCalls:
       m_Calls: []
