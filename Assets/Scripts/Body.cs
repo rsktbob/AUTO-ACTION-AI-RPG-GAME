@@ -7,11 +7,11 @@ using UnityEngine.Events;
 
 public class Body : MonoBehaviour
 {
+    [HideInInspector]
     public bool isTouchFloor = false;
-    
-    [HideInInspector] 
-    public UnityEvent<string> CollisionEnterEvent;
-    public UnityEvent<string> CollisionLeaveEvent;
+
+    [Header("Event")]
+    public UnityEvent<string> CollisionEvent;
 
     private void Start()
     {
@@ -24,7 +24,7 @@ public class Body : MonoBehaviour
         if (collision.gameObject.CompareTag("floor"))
         {
             isTouchFloor = true;
-            CollisionEnterEvent.Invoke(gameObject.name);
+            CollisionEvent.Invoke(gameObject.name);
         }
     }
     private void OnCollisionExit(Collision collision)
@@ -32,8 +32,6 @@ public class Body : MonoBehaviour
         if (collision.gameObject.CompareTag("floor"))
         {
             isTouchFloor = false;
-            CollisionLeaveEvent.Invoke(gameObject.name);
         }
     }
 }
-

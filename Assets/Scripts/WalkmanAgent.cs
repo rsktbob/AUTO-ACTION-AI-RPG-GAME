@@ -11,18 +11,15 @@ using UnityEditor;
 public class WalkmanAgent : Agent
 {
     [SerializeField] private GameObject robotPrefab;
-    [SerializeField] private float InitPositionMinY;
-    [SerializeField] private float InitPositionMaxY;
     [SerializeField] private float rewardUpperLimit;
     private Walkman robot;
 
     // reset the agent or remove it from the environment
     public override void OnEpisodeBegin()
     {
-        InvokeRepeating("AddRewardToRobot", 1f, 1f); // add reward every 1 sec
-        InvokeRepeating("JudgeWhetherEnterNextEpisode", 5f, 5f); // judge next episode every 10 sec
-        InvokeRepeating("JudgeWhetherEnterNextEpisode2", 30f, 30f);
         CreateNewRobot();
+        InvokeRepeating("AddRewardToRobot", 1f, 1f); // add reward every 1 sec
+        InvokeRepeating("JudgeWhetherEnterNextEpisode", 20f, 20f); // judge next episode every 10 sec
     }
 
     // to specify agent behavior at every step, based on the provided action
@@ -118,33 +115,31 @@ public class WalkmanAgent : Agent
             );
 
         // output Left Leg, Foot
-        robot.LeftLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.LeftLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetLeftLegAngularVelocity.x, -20f, 20f), Mathf.Clamp(robot.LeftLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetLeftLegAngularVelocity.y, -6f, 6f), Mathf.Clamp(robot.LeftLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetLeftLegAngularVelocity.z, -20f, 20f));
-        robot.LeftUpLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.LeftUpLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetLeftUpLegAngularVelocity.x, -20f, 20f), Mathf.Clamp(robot.LeftUpLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetLeftUpLegAngularVelocity.y, -6f, 6f), Mathf.Clamp(robot.LeftUpLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetLeftUpLegAngularVelocity.z, -20f, 20f));
-        robot.LeftFoot.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.LeftFoot.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetLeftFootAngularVelocity.x, -20f, 20f), Mathf.Clamp(robot.LeftFoot.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetLeftFootAngularVelocity.y, -6f, 6f), Mathf.Clamp(robot.LeftFoot.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetLeftFootAngularVelocity.z, -20f, 20f));
+        robot.LeftLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.LeftLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetLeftLegAngularVelocity.x, -10f, 10f), Mathf.Clamp(robot.LeftLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetLeftLegAngularVelocity.y, -3f, 3f), Mathf.Clamp(robot.LeftLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetLeftLegAngularVelocity.z, -10f, 10f));
+        robot.LeftUpLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.LeftUpLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetLeftUpLegAngularVelocity.x, -10f, 10f), Mathf.Clamp(robot.LeftUpLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetLeftUpLegAngularVelocity.y, -3f, 3f), Mathf.Clamp(robot.LeftUpLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetLeftUpLegAngularVelocity.z, -10f, 10f)); ;
+        robot.LeftFoot.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.LeftFoot.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetLeftFootAngularVelocity.x, -10f, 10f), Mathf.Clamp(robot.LeftFoot.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetLeftFootAngularVelocity.y, -3f, 3f), Mathf.Clamp(robot.LeftFoot.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetLeftFootAngularVelocity.z, -10f, 10f)); ;
 
         // output right Leg, Foot
-        robot.RightLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.RightLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetRightLegAngularVelocity.x, -20f, 20f), Mathf.Clamp(robot.RightLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetRightLegAngularVelocity.y, -6f, 6f), Mathf.Clamp(robot.RightLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetRightLegAngularVelocity.z, -20f, 20f));
-        robot.RightUpLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.RightUpLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetRightUpLegAngularVelocity.x, -20f, 20f), Mathf.Clamp(robot.RightUpLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetRightUpLegAngularVelocity.y, -6f, 6f), Mathf.Clamp(robot.RightUpLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetRightUpLegAngularVelocity.z, -20f, 20f));
-        robot.RightFoot.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.RightFoot.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetRightFootAngularVelocity.x, -20f, 20f), Mathf.Clamp(robot.RightFoot.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetRightFootAngularVelocity.y, -6f, 6f), Mathf.Clamp(robot.RightFoot.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetRightFootAngularVelocity.z, -20f, 20f));
+        robot.RightLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.RightLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetRightLegAngularVelocity.x, -10f, 10f), Mathf.Clamp(robot.RightLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetRightLegAngularVelocity.y, -3f, 3f), Mathf.Clamp(robot.RightLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetRightLegAngularVelocity.z, -10f, 10f)); ;
+        robot.RightUpLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.RightUpLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetRightUpLegAngularVelocity.x, -10f, 10f), Mathf.Clamp(robot.RightUpLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetRightUpLegAngularVelocity.y, -3f, 3f), Mathf.Clamp(robot.RightUpLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetRightUpLegAngularVelocity.z, -10f, 10f)); ;
+        robot.RightFoot.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.RightFoot.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetRightFootAngularVelocity.x, -10f, 10f), Mathf.Clamp(robot.RightFoot.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetRightFootAngularVelocity.y, -3f, 3f), Mathf.Clamp(robot.RightFoot.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetRightFootAngularVelocity.z, -10f, 10f)); ;
 
         // output Left shoulder, arm, hand
-        robot.LeftShoulder.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.LeftShoulder.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetLeftShoulderAngularVelocity.x, -10f, 10f), Mathf.Clamp(robot.LeftShoulder.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetLeftShoulderAngularVelocity.y, -4f, 4f), Mathf.Clamp(robot.LeftShoulder.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetLeftShoulderAngularVelocity.z, -10f, 10f));
-        robot.LeftArm.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.LeftArm.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetLeftArmAngularVelocity.x, -10f, 10f), Mathf.Clamp(robot.LeftArm.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetLeftArmAngularVelocity.y, -4f, 4f), Mathf.Clamp(robot.LeftArm.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetLeftArmAngularVelocity.z, -10f, 10f));
-        robot.LeftHand.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.LeftHand.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetLeftHandAngularVelocity.x, -10f, 10f), Mathf.Clamp(robot.LeftHand.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetLeftHandAngularVelocity.y, -4f, 4f), Mathf.Clamp(robot.LeftHand.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetLeftHandAngularVelocity.z, -10f, 10f));
+        robot.LeftShoulder.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.LeftShoulder.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetLeftShoulderAngularVelocity.x, -5f, 5f), Mathf.Clamp(robot.LeftShoulder.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetLeftShoulderAngularVelocity.y, -2f, 2f), Mathf.Clamp(robot.LeftShoulder.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetLeftShoulderAngularVelocity.z, -5f, 5f)); ;
+        robot.LeftArm.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.LeftArm.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetLeftArmAngularVelocity.x, -5f, 5f), Mathf.Clamp(robot.LeftArm.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetLeftArmAngularVelocity.y, -2f, 2f), Mathf.Clamp(robot.LeftArm.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetLeftArmAngularVelocity.z, -5f, 5f)); ;
+        robot.LeftHand.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.LeftHand.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetLeftHandAngularVelocity.x, -5f, 5f), Mathf.Clamp(robot.LeftHand.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetLeftHandAngularVelocity.y, -2f, 2f), Mathf.Clamp(robot.LeftHand.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetLeftHandAngularVelocity.z, -5f, 5f)); ;
 
         // output Right shoulder, arm, hand
-        robot.RightShoulder.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.RightShoulder.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetRightShoulderAngularVelocity.x, -10f, 10f), Mathf.Clamp(robot.RightShoulder.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetRightShoulderAngularVelocity.y, -4f, 4f), Mathf.Clamp(robot.RightShoulder.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetRightShoulderAngularVelocity.z, -10f, 10f));
-        robot.RightArm.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.RightArm.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetRightArmAngularVelocity.x, -10f, 10f), Mathf.Clamp(robot.RightArm.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetRightArmAngularVelocity.y, -4f, 4f), Mathf.Clamp(robot.RightArm.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetRightArmAngularVelocity.z, -10f, 10f));
-        robot.RightHand.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.RightHand.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetRightHandAngularVelocity.x, -10f, 10f), Mathf.Clamp(robot.RightHand.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetRightHandAngularVelocity.y, -4f, 4f), Mathf.Clamp(robot.RightHand.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetRightHandAngularVelocity.z, -10f, 10f));
+        robot.RightShoulder.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.RightShoulder.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetRightShoulderAngularVelocity.x, -5f, 5f), Mathf.Clamp(robot.RightShoulder.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetRightShoulderAngularVelocity.y, -2f, 2f), Mathf.Clamp(robot.RightShoulder.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetRightShoulderAngularVelocity.z, -5f, 5f)); ;
+        robot.RightArm.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.RightArm.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetRightArmAngularVelocity.x, -5f, 5f), Mathf.Clamp(robot.RightArm.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetRightArmAngularVelocity.y, -2f, 2f), Mathf.Clamp(robot.RightArm.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetRightArmAngularVelocity.z, -5f, 5f)); ;
+        robot.RightHand.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.RightHand.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetRightHandAngularVelocity.x, -5f, 5f), Mathf.Clamp(robot.RightHand.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetRightHandAngularVelocity.y, -2f, 2f), Mathf.Clamp(robot.RightHand.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetRightHandAngularVelocity.z, -5f, 5f)); ;
 
-        robot.Hips.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.Hips.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetHipAngularVelocity.x, -20f, 20f), Mathf.Clamp(robot.Hips.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetHipAngularVelocity.y, -4f, 4f), Mathf.Clamp(robot.Hips.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetHipAngularVelocity.z, -20f, 20f));
+        robot.Hips.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.Hips.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetHipAngularVelocity.x, -5f, 5f), Mathf.Clamp(robot.Hips.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetHipAngularVelocity.y, -2f, 2f), Mathf.Clamp(robot.Hips.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetHipAngularVelocity.z, -5f, 5f)); ;
 
-        robot.Waist.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.Waist.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetWaistAngularVelocity.x, -10f, 10f), Mathf.Clamp(robot.Waist.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetWaistAngularVelocity.y, -20f, 20f), Mathf.Clamp(robot.Waist.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetWaistAngularVelocity.z, -20f, 20f));
-        robot.Chest.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.Chest.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetWaistAngularVelocity.x, -10f, 10f), Mathf.Clamp(robot.Chest.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetWaistAngularVelocity.y, -20f, 20f), Mathf.Clamp(robot.Chest.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetWaistAngularVelocity.z, -20f, 20f));
+        robot.Waist.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.Waist.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetWaistAngularVelocity.x, -5f, 5f), Mathf.Clamp(robot.Waist.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetWaistAngularVelocity.y, -5f, 5f), Mathf.Clamp(robot.Waist.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetWaistAngularVelocity.z, -5f, 5f)); ;
+        robot.Chest.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.Chest.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetWaistAngularVelocity.x, -5f, 5f), Mathf.Clamp(robot.Chest.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetWaistAngularVelocity.y, -5f, 5f), Mathf.Clamp(robot.Chest.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetWaistAngularVelocity.z, -5f, 5f)); ;
 
-        robot.Head.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.Head.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetHeadAngularVelocity.x, -6f, 6f), Mathf.Clamp(robot.Head.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetHeadAngularVelocity.y, -6f, 6f), Mathf.Clamp(robot.Head.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetHeadAngularVelocity.z, -6f, 6f));
-
-
+        robot.Head.GetComponent<ConfigurableJoint>().targetAngularVelocity = new Vector3(Mathf.Clamp(robot.Head.GetComponent<ConfigurableJoint>().targetAngularVelocity.x + targetHeadAngularVelocity.x, -3f, 3f), Mathf.Clamp(robot.Head.GetComponent<ConfigurableJoint>().targetAngularVelocity.y + targetHeadAngularVelocity.y, -3f, 3f), Mathf.Clamp(robot.Head.GetComponent<ConfigurableJoint>().targetAngularVelocity.z + targetHeadAngularVelocity.z, -3f, 3f));
     }
 
     // to collect the vector observations of the agent for the step.(input)
@@ -234,7 +229,7 @@ public class WalkmanAgent : Agent
         sensor.AddObservation(robot.Head.GetComponent<Rigidbody>().velocity); // velocity
         sensor.AddObservation(robot.Head.GetComponent<Rigidbody>().angularVelocity); // angular velocity
 
-        //is touch floor
+        ////is touch floor
         sensor.AddObservation(robot.LeftUpLeg.isTouchFloor);
         sensor.AddObservation(robot.LeftLeg.isTouchFloor);
         sensor.AddObservation(robot.LeftFoot.isTouchFloor);
@@ -253,53 +248,14 @@ public class WalkmanAgent : Agent
     //Add reward to robot
     private void AddRewardToRobot() 
     {
-        //AddReward(robot.Hips.transform.localPosition.y > 2.25f ? 2f : -4);
-        //AddReward(robot.Chest.transform.localPosition.y > 2.9f ? 2f : -4);
-        AddReward(robot.Hips.transform.localPosition.y - 0.7f);
-        AddReward(robot.Chest.transform.localPosition.y - 0.7f);
-        //float eulerHipX = robot.Head.transform.eulerAngles.x < 180 ? robot.Head.transform.eulerAngles.x : 360 - robot.Head.transform.eulerAngles.x;
-        //float eulerHipZ = robot.Head.transform.eulerAngles.z < 180 ? robot.Head.transform.eulerAngles.z : 360 - robot.Head.transform.eulerAngles.z;
-        //AddReward((90 - eulerHipX - eulerHipZ) / 80);
-        //AddReward((90 - eulerHipX - eulerHipZ) / 80);
-        float eulerLeftFootX = robot.LeftFoot.transform.eulerAngles.x < 180 ? robot.LeftFoot.transform.eulerAngles.x : 360 - robot.LeftFoot.transform.eulerAngles.x;
-        float eulerLeftFootZ = robot.LeftFoot.transform.eulerAngles.z < 180 ? robot.LeftFoot.transform.eulerAngles.z : 360 - robot.LeftFoot.transform.eulerAngles.z;
-        float eulerRightFootX = robot.RightFoot.transform.eulerAngles.x < 180 ? robot.RightFoot.transform.eulerAngles.x : 360 - robot.RightFoot.transform.eulerAngles.x;
-        float eulerRightFootZ = robot.RightFoot.transform.eulerAngles.z < 180 ? robot.RightFoot.transform.eulerAngles.z : 360 - robot.RightFoot.transform.eulerAngles.z;
-        AddReward((45 - eulerLeftFootX - eulerLeftFootZ) / 80);
-        AddReward((45 - eulerRightFootX - eulerRightFootZ) / 80);
-
-        /*float LeftFootToHeadDistance = robot.Head.transform.localPosition.y - robot.LeftFoot.transform.localPosition.y;
-        float RightFootToHeadDistance = robot.Head.transform.localPosition.y - robot.RightFoot.transform.localPosition.y;
-        float LeftFootToHipDistance = robot.Hip.transform.localPosition.y - robot.RightFoot.transform.localPosition.y;
-        float RightFootToHipDistance = robot.Hip.transform.localPosition.y - robot.RightFoot.transform.localPosition.y;
-        AddReward((LeftFootToHeadDistance - 1)*2);
-        AddReward((RightFootToHeadDistance - 1)*2);
-        AddReward((LeftFootToHipDistance - 1) * 2);
-        AddReward((RightFootToHipDistance - 1) * 2);
-        
-        float eulerHeadX = robot.Head.transform.eulerAngles.x < 180 ? robot.Head.transform.eulerAngles.x : 360 - robot.Head.transform.eulerAngles.x;
-        float eulerHeadZ = robot.Head.transform.eulerAngles.z < 180 ? robot.Head.transform.eulerAngles.z : 360 - robot.Head.transform.eulerAngles.z;
-        float eulerLeftFootX = robot.LeftFoot.transform.eulerAngles.x < 180 ? robot.LeftFoot.transform.eulerAngles.x : 360 - robot.LeftFoot.transform.eulerAngles.x;
-        float eulerLeftFootZ = robot.LeftFoot.transform.eulerAngles.z < 180 ? robot.LeftFoot.transform.eulerAngles.z : 360 - robot.LeftFoot.transform.eulerAngles.z;
-        float eulerRightFootX = robot.RightFoot.transform.eulerAngles.x < 180 ? robot.RightFoot.transform.eulerAngles.x : 360 - robot.RightFoot.transform.eulerAngles.x;
-        float eulerRightFootZ = robot.RightFoot.transform.eulerAngles.z < 180 ? robot.RightFoot.transform.eulerAngles.z : 360 - robot.RightFoot.transform.eulerAngles.z;
-        AddReward((90 - eulerChestX- eulerChestZ) / 80);
-        AddReward((90 - eulerHipX - eulerHipZ) / 80);
-        AddReward((90 - eulerHeadX - eulerHeadZ) / 160);
-        AddReward((90 - eulerLeftFootX - eulerLeftFootZ) / 80);
-        AddReward((90 - eulerRightFootX - eulerRightFootZ) / 80);
-
-        AddReward(robot.LeftFoot.GetComponent<bodyCollision>().isTouchFloor ? 1 : -1);
-        AddReward(robot.LeftToe.GetComponent<bodyCollision>().isTouchFloor ? 1 : -1);
-        AddReward(robot.RightFoot.GetComponent<bodyCollision>().isTouchFloor ? 1 : -1);
-        AddReward(robot.RightToe.GetComponent<bodyCollision>().isTouchFloor ? 1 : -1);
-
-        AddReward(-math.abs(robot.Hip.transform.position.x));
-        AddReward(-math.abs(robot.Hip.transform.position.z));*/
-        // Height reward
-        //float heightReward = robot.Head.transform.localPosition.y - rewardUpperLimit;
-        //heightReward = heightReward > 0 ? (float)Math.Pow(20, heightReward) + heightReward : heightReward;
-        //AddReward(heightReward);
+        AddReward(robot.Hips.transform.localPosition.y > 2.25f ? 1 : 0);
+        AddReward(robot.Head.transform.localPosition.y > 2.9f ? 1 : 0);
+        float eulerChestX = robot.Chest.transform.eulerAngles.x < 180 ? robot.Chest.transform.eulerAngles.x : 360 - robot.Chest.transform.eulerAngles.x;
+        float eulerChestZ = robot.Chest.transform.eulerAngles.z < 180 ? robot.Chest.transform.eulerAngles.z : 360 - robot.Chest.transform.eulerAngles.z;
+        float eulerHipX = robot.Hips.transform.eulerAngles.x < 180 ? robot.Hips.transform.eulerAngles.x : 360 - robot.Hips.transform.eulerAngles.x;
+        float eulerHipZ = robot.Hips.transform.eulerAngles.z < 180 ? robot.Hips.transform.eulerAngles.z : 360 - robot.Hips.transform.eulerAngles.z;
+        AddReward((90 - eulerChestX - eulerChestZ) / 120);
+        AddReward((90 - eulerHipX - eulerHipZ) / 120);
     }
 
 
@@ -315,8 +271,8 @@ public class WalkmanAgent : Agent
         {
             Destroy(robot.gameObject);
         }
-        robot = Instantiate(robotPrefab, new Vector3(transform.position.x + 10f, transform.position.y - 1f, transform.position.z), new Quaternion(0,0,0,0)).GetComponent<Walkman>();
-        robot.transform.eulerAngles = new Vector3(0, 90f, 0);
+        robot = Instantiate(robotPrefab, new Vector3(transform.position.x + 10f, transform.position.y+ 0.6f, transform.position.z), new Quaternion(0,0,0,0)).GetComponent<Walkman>();
+        robot.transform.eulerAngles = new Vector3(0, -90f, 0);
         robot.transform.parent = transform;
         robot.RewardEvent.AddListener(AddReward);
     }
@@ -335,28 +291,13 @@ public class WalkmanAgent : Agent
     private void JudgeWhetherEnterNextEpisode()
     {
         float actualPositionY = robot.Head.transform.localPosition.y;
-
-        if (actualPositionY < rewardUpperLimit)
-        {
-            CancelInvoke("AddRewardToRobot");
-            CancelInvoke("JudgeWhetherEnterNextEpisode");
-            EndEpisode();
-        }
-    }
-
-
-    private void JudgeWhetherEnterNextEpisode2()
-    {
         float actualPositionX = RelativeFloorPosition(robot.Hips.transform.position).x;
-        //AddReward(10 - RelativeFloorPosition(robot.LeftFoot.transform.position).x);
-        //AddReward(10 - RelativeFloorPosition(robot.RightFoot.transform.position).x);
-        if (actualPositionX > -9)
+        Debug.Log("restart");
+        if (actualPositionY < rewardUpperLimit || actualPositionX > -9)
         {
             CancelInvoke("AddRewardToRobot");
             CancelInvoke("JudgeWhetherEnterNextEpisode");
             EndEpisode();
         }
     }
-
-    
 }
