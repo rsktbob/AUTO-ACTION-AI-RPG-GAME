@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Unity.Mathematics;
 
 public class Walkman : MonoBehaviour
 {
@@ -26,8 +27,12 @@ public class Walkman : MonoBehaviour
     public Body RightUpLeg;
     public Body RightLeg;
     public Body RightFoot;
-
-    int isNowFootRight = 0;
+    public FootState footstate = FootState.Right;
+    public enum FootState
+    {
+        Right = 0,
+        Left = 1
+    }
 
     [HideInInspector]
     public UnityEvent<float> RewardEvent;
@@ -35,7 +40,10 @@ public class Walkman : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        LeftFoot.CollisionEnterEvent.AddListener(OnBodyCollisionEnter);
+        RightFoot.CollisionEnterEvent.AddListener(OnBodyCollisionEnter);
+        LeftFoot.CollisionLeaveEvent.AddListener(OnBodyCollisionLeave);
+        RightFoot.CollisionLeaveEvent.AddListener(OnBodyCollisionLeave);
     }
 
     // Update is called once per frame
@@ -45,71 +53,73 @@ public class Walkman : MonoBehaviour
     }
 
     // Notify the WalkmanAgent on body collision.
-    public void OnBodyCollision(string bodyName)
+    public void OnBodyCollisionEnter(string bodyName)
     {
         switch (bodyName)
         {
             case "LeftFoot":
-                OnLeftFootCollision();
+                OnLeftFootCollisionEnter();
                 break;
             case "RightFoot":
-                OnRightFootCollision();
+                OnRightFootCollisionEnter();
                 break;
         }
     }
 
-    // Notify the WalkmanAgent on leftFoot collision.
-    public void OnLeftFootCollision()
+    public void OnBodyCollisionLeave(string bodyName)
     {
-        if (isNowFootRight == 0)
+        switch (bodyName)
         {
-            isNowFootRight = 1;
-            return;
+            case "LeftFoot":
+                OnLeftFootCollisionLeave();
+                break;
+            case "RightFoot":
+                OnRightFootCollisionLeave();
+                break;
         }
-
-        if (isNowFootRight == -1)
+    }
+    // Notify the WalkmanAgent on leftFoot collision.
+    public void OnLeftFootCollisionEnter()
+    {
+        if (footstate == FootState.Left)
         {
-            if (Chest.transform.localPosition.y > 2.9f)
+            if (Chest.transform.localPosition.y > 2.5f)
             {
-                Debug.Log("left+");
-                isNowFootRight = 1;
-                RewardEvent.Invoke(RightFoot.transform.position.x - LeftFoot.transform.position.x);
+                Debug.Log("leftforward");
+                RewardEvent.Invoke(15f - math.abs(0.4f - (RightFoot.transform.position.x - LeftFoot.transform.position.x)) * 60);
             }
-        }
-        else
-        {
-            if (Chest.transform.localPosition.y > 2.9f)
-            {
-                Debug.Log("left-");
-                RewardEvent.Invoke(-5);
-            }
+            footstate = FootState.Right;
         }
     }
 
-    // Notify the WalkmanAgent on rightFoot collision.
-    public void OnRightFootCollision()
+    public void OnRightFootCollisionEnter()
     {
-        if (isNowFootRight == 0)
+        if (footstate == FootState.Right)
         {
-            isNowFootRight = -1;
-            return;
-        }
-        if (isNowFootRight == 1)
-        {
-            if (Chest.transform.localPosition.y > 2.9f)
+            if (Chest.transform.localPosition.y > 2.5f)
             {
-                Debug.Log("right+");
-                isNowFootRight = -1;
-                RewardEvent.Invoke(LeftFoot.transform.position.x - RightFoot.transform.position.x);
+                Debug.Log("rightforward");
+                RewardEvent.Invoke(15f - math.abs(0.4f - (LeftFoot.transform.position.x - RightFoot.transform.position.x)) * 60);
             }
+            footstate = FootState.Left;
         }
-        else
+    }
+
+    public void OnRightFootCollisionLeave()
+    {
+        if (LeftFoot.isTouchFloor & Chest.transform.localPosition.y > 2.5f & footstate == FootState.Right)
         {
-            if (Chest.transform.localPosition.y > 2.9f)
-            {
-                Debug.Log("right-");
-                RewardEvent.Invoke(5);
-            }
+            Debug.Log("rightup");
+            RewardEvent.Invoke(10);
+        }
+    }
+
+    public void OnLeftFootCollisionLeave()
+    {
+        if (RightFoot.isTouchFloor & Chest.transform.localPosition.y > 2.5f & footstate == FootState.Left)
+        {
+            Debug.Log("leftforward");
+            RewardEvent.Invoke(10);
         }
     }
 }

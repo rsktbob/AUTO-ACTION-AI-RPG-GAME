@@ -11,7 +11,8 @@ public class Body : MonoBehaviour
     public bool isTouchFloor = false;
 
     [Header("Event")]
-    public UnityEvent<string> CollisionEvent;
+    public UnityEvent<string> CollisionEnterEvent;
+    public UnityEvent<string> CollisionLeaveEvent;
 
     private void Start()
     {
@@ -24,7 +25,7 @@ public class Body : MonoBehaviour
         if (collision.gameObject.CompareTag("floor"))
         {
             isTouchFloor = true;
-            CollisionEvent.Invoke(gameObject.name);
+            CollisionEnterEvent.Invoke(gameObject.name);
         }
     }
     private void OnCollisionExit(Collision collision)
@@ -32,6 +33,7 @@ public class Body : MonoBehaviour
         if (collision.gameObject.CompareTag("floor"))
         {
             isTouchFloor = false;
+            CollisionLeaveEvent.Invoke(gameObject.name);
         }
     }
 }

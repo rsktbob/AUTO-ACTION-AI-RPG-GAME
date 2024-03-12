@@ -19,7 +19,8 @@ public class WalkmanAgent : Agent
     {
         CreateNewRobot();
         InvokeRepeating("AddRewardToRobot", 1f, 1f); // add reward every 1 sec
-        InvokeRepeating("JudgeWhetherEnterNextEpisode", 20f, 20f); // judge next episode every 10 sec
+        InvokeRepeating("JudgeWhetherEnterNextEpisode", 5f, 5f); // judge next episode every 10 sec
+        InvokeRepeating("JudgeWhetherEnterNextEpisode2", 20f, 20f); // judge next episode every 10 sec
     }
 
     // to specify agent behavior at every step, based on the provided action
@@ -243,19 +244,22 @@ public class WalkmanAgent : Agent
         sensor.AddObservation(robot.Chest.isTouchFloor);
         sensor.AddObservation(robot.Waist.isTouchFloor);
         sensor.AddObservation(robot.Head.isTouchFloor);
+        sensor.AddObservation((int)robot.footstate);
     }
 
     //Add reward to robot
     private void AddRewardToRobot() 
     {
-        AddReward(robot.Hips.transform.localPosition.y > 2.25f ? 1 : 0);
-        AddReward(robot.Head.transform.localPosition.y > 2.9f ? 1 : 0);
-        float eulerChestX = robot.Chest.transform.eulerAngles.x < 180 ? robot.Chest.transform.eulerAngles.x : 360 - robot.Chest.transform.eulerAngles.x;
-        float eulerChestZ = robot.Chest.transform.eulerAngles.z < 180 ? robot.Chest.transform.eulerAngles.z : 360 - robot.Chest.transform.eulerAngles.z;
-        float eulerHipX = robot.Hips.transform.eulerAngles.x < 180 ? robot.Hips.transform.eulerAngles.x : 360 - robot.Hips.transform.eulerAngles.x;
-        float eulerHipZ = robot.Hips.transform.eulerAngles.z < 180 ? robot.Hips.transform.eulerAngles.z : 360 - robot.Hips.transform.eulerAngles.z;
-        AddReward((90 - eulerChestX - eulerChestZ) / 120);
-        AddReward((90 - eulerHipX - eulerHipZ) / 120);
+        AddReward(robot.Hips.transform.localPosition.y > 2.2f ? 1 : -1);
+        AddReward(robot.Head.transform.localPosition.y > 2.6f ? 1 : -1);
+        //AddReward(robot.Hips.transform.localPosition.y -0.5f);
+        //AddReward(robot.Chest.transform.localPosition.y - 0.5f);
+        float eulerLeftFootX = robot.LeftFoot.transform.eulerAngles.x < 180 ? robot.LeftFoot.transform.eulerAngles.x : 360 - robot.LeftFoot.transform.eulerAngles.x;
+        float eulerLeftFootZ = robot.LeftFoot.transform.eulerAngles.z < 180 ? robot.LeftFoot.transform.eulerAngles.z : 360 - robot.LeftFoot.transform.eulerAngles.z;
+        float eulerRightFootX = robot.RightFoot.transform.eulerAngles.x < 180 ? robot.RightFoot.transform.eulerAngles.x : 360 - robot.RightFoot.transform.eulerAngles.x;
+        float eulerRightFootZ = robot.RightFoot.transform.eulerAngles.z < 180 ? robot.RightFoot.transform.eulerAngles.z : 360 - robot.RightFoot.transform.eulerAngles.z;
+        AddReward((45 - eulerLeftFootX - eulerLeftFootZ) / 100);
+        AddReward((45 - eulerRightFootX - eulerRightFootZ) / 100);
     }
 
 
@@ -271,8 +275,8 @@ public class WalkmanAgent : Agent
         {
             Destroy(robot.gameObject);
         }
-        robot = Instantiate(robotPrefab, new Vector3(transform.position.x + 10f, transform.position.y+ 0.6f, transform.position.z), new Quaternion(0,0,0,0)).GetComponent<Walkman>();
-        robot.transform.eulerAngles = new Vector3(0, -90f, 0);
+        robot = Instantiate(robotPrefab, new Vector3(transform.position.x + 10f, transform.position.y - 1f, transform.position.z), new Quaternion(0,0,0,0)).GetComponent<Walkman>();
+        robot.transform.eulerAngles = new Vector3(0, 90f, 0);
         robot.transform.parent = transform;
         robot.RewardEvent.AddListener(AddReward);
     }
@@ -288,15 +292,26 @@ public class WalkmanAgent : Agent
     }
 
     // Judge whether enter next episode
+    
     private void JudgeWhetherEnterNextEpisode()
     {
         float actualPositionY = robot.Head.transform.localPosition.y;
-        float actualPositionX = RelativeFloorPosition(robot.Hips.transform.position).x;
-        Debug.Log("restart");
-        if (actualPositionY < rewardUpperLimit || actualPositionX > -9)
+        if (actualPositionY < rewardUpperLimit)
         {
             CancelInvoke("AddRewardToRobot");
             CancelInvoke("JudgeWhetherEnterNextEpisode");
+            CancelInvoke("JudgeWhetherEnterNextEpisode2");
+            EndEpisode();
+        }
+    }
+    private void JudgeWhetherEnterNextEpisode2()
+    {
+        float actualPositionX = RelativeFloorPosition(robot.Hips.transform.position).x;
+        if (actualPositionX > -9)
+        {
+            CancelInvoke("AddRewardToRobot");
+            CancelInvoke("JudgeWhetherEnterNextEpisode");
+            CancelInvoke("JudgeWhetherEnterNextEpisode2");
             EndEpisode();
         }
     }
