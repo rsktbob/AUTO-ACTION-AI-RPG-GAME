@@ -1060,6 +1060,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2662396636785557866, guid: 39c04f511b4cde14580911ddd4155916, type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 158
+      objectReference: {fileID: 0}
     - target: {fileID: 6028989596824957340, guid: 39c04f511b4cde14580911ddd4155916, type: 3}
       propertyPath: m_RootOrder
       value: 2

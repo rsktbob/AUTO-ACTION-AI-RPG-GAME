@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 157
+    VectorObservationSize: 158
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 45
@@ -229,8 +229,6 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
   robotPrefab: {fileID: 2113573993983117111, guid: 6f014031ec217d14e9c6d2062364f7db, type: 3}
-  InitPositionMinY: 0
-  InitPositionMaxY: 0
   rewardUpperLimit: 2.6
 --- !u!114 &8024799331358085081
 MonoBehaviour:
