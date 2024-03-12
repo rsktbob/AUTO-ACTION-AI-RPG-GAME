@@ -199,14 +199,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 21093042}
-  m_LocalRotation: {x: -0.015828006, y: 0.99528456, z: -0.076596975, w: -0.057367265}
-  m_LocalPosition: {x: 0.9, y: 9.4, z: -1.4}
+  m_LocalRotation: {x: -0.021742139, y: 0.99673027, z: -0.07513256, w: 0.02027776}
+  m_LocalPosition: {x: 0.77, y: 0.53, z: -0.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 8.875, y: 186.495, z: -1.318}
+  m_LocalEulerAnglesHint: {x: 8.563, y: 177.468, z: -2.689}
 --- !u!1001 &144963115
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1510,6 +1510,14 @@ PrefabInstance:
     - target: {fileID: 6028989596824957343, guid: 39c04f511b4cde14580911ddd4155916, type: 3}
       propertyPath: m_Name
       value: Walking_Env (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028989597133099639, guid: 39c04f511b4cde14580911ddd4155916, type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 158
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028989597133099639, guid: 39c04f511b4cde14580911ddd4155916, type: 3}
+      propertyPath: m_BrainParameters.m_ActionSpec.m_NumContinuousActions
+      value: 45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39c04f511b4cde14580911ddd4155916, type: 3}

@@ -237,16 +237,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 162
+    VectorObservationSize: 158
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 54
+      m_NumContinuousActions: 45
       BranchSizes: 01000000
     VectorActionSize: 
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 08cd6848ab182aa4988e8fd0fc459a85, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: My Behavior
@@ -270,10 +270,8 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
-  robotPrefab: {fileID: 2113573993983117111, guid: e26521b363617754eba9e19ec71f0093, type: 3}
-  InitPositionMinY: 5
-  InitPositionMaxY: 5
-  rewardUpperLimit: 4.2
+  robotPrefab: {fileID: 2113573993983117111, guid: 6f014031ec217d14e9c6d2062364f7db, type: 3}
+  rewardUpperLimit: 2.6
 --- !u!114 &6028989597133099636
 MonoBehaviour:
   m_ObjectHideFlags: 0
