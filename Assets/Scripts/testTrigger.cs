@@ -54,11 +54,11 @@ public class testTrigger : MonoBehaviour
             {
                 colliderComponent.isTrigger = false;
             }
-            Debug.Log(velocity);
-            Debug.Log(normalVector1);
-            Debug.Log(normalVector2);
-            Debug.Log(normalVector3);
             Debug.Log(dotProduct);
+            if(dotProduct < 6)
+            {
+                colliderComponent.isTrigger = false;
+            }
         }
         else
             colliderComponent.isTrigger = false; 
