@@ -4,6 +4,13 @@ using UnityEngine;
 using UnityEngine.Events;
 using Unity.Mathematics;
 
+
+public enum FootState
+{
+    Right = 0,
+    Left = 1
+}
+
 public class Walkman : MonoBehaviour
 {
     public Body Head;
@@ -28,11 +35,6 @@ public class Walkman : MonoBehaviour
     public Body RightLeg;
     public Body RightFoot;
     public FootState footstate = FootState.Right;
-    public enum FootState
-    {
-        Right = 0,
-        Left = 1
-    }
 
     [HideInInspector]
     public UnityEvent<float> RewardEvent;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.MLAgents;
@@ -18,6 +19,7 @@ public class Body : MonoBehaviour
     {
 
     }
+
     // Start is called before the first frame update
     private void OnCollisionEnter(Collision collision)
     {
@@ -35,5 +37,15 @@ public class Body : MonoBehaviour
             isTouchFloor = false;
             CollisionLeaveEvent.Invoke(gameObject.name);
         }
+    }
+
+    // Change body angular velocity
+    public void AddAngularVelocity(float xLimit, float yLimit, float zLimit, Vector3 acceleration)
+    {
+        ConfigurableJoint joint = GetComponent<ConfigurableJoint>();
+        float newSpeedX = Mathf.Clamp(joint.targetAngularVelocity.x + acceleration.x, -xLimit, xLimit);
+        float newSpeedY = Mathf.Clamp(joint.targetAngularVelocity.y + acceleration.y, -yLimit, yLimit);
+        float newSpeedZ = Mathf.Clamp(joint.targetAngularVelocity.z + acceleration.z, -zLimit, zLimit);
+        joint.targetAngularVelocity = new Vector3(newSpeedX, newSpeedY, newSpeedZ);
     }
 }
