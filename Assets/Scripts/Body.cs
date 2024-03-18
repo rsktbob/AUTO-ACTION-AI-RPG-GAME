@@ -17,7 +17,7 @@ public class Body : MonoBehaviour
 
     private void Start()
     {
-
+        
     }
 
     // Start is called before the first frame update
