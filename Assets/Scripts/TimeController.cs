@@ -6,11 +6,12 @@ public class TimeController : MonoBehaviour
 {
     void Update()
     {
+        //Debug.Log(Time.timeScale);
         // 如果按下空格鍵，則將時間流速設置為 0.5 倍
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("hi");
-            Time.timeScale = 0.05f;
+            Time.timeScale = 0.1f;
         }
 
         if (Input.GetKeyDown(KeyCode.S))

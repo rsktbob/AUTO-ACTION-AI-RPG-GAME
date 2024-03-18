@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Body : MonoBehaviour
+public class FightBody : MonoBehaviour
 {
     [HideInInspector]
     public bool isTouchFloor = false;
@@ -17,7 +17,7 @@ public class Body : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 
     // Start is called before the first frame update
@@ -27,7 +27,7 @@ public class Body : MonoBehaviour
         if (collision.gameObject.CompareTag("floor"))
         {
             isTouchFloor = true;
-            CollisionEnterEvent.Invoke(gameObject.name); // invoke walkman event
+            CollisionEnterEvent.Invoke(gameObject.name);
         }
     }
     private void OnCollisionExit(Collision collision)
