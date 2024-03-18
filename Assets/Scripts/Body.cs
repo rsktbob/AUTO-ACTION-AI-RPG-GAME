@@ -25,7 +25,7 @@ public class Body : MonoBehaviour
         if (collision.gameObject.CompareTag("floor"))
         {
             isTouchFloor = true;
-            CollisionEnterEvent.Invoke(gameObject.name);
+            CollisionEnterEvent.Invoke(gameObject.name); // invoke walkman event
         }
     }
     private void OnCollisionExit(Collision collision)

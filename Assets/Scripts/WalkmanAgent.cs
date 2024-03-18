@@ -19,8 +19,8 @@ public class WalkmanAgent : Agent
     {
         CreateNewRobot();
         InvokeRepeating("AddRewardToRobot", 1f, 1f); // add reward every 1 sec
-        InvokeRepeating("JudgeWhetherEnterNextEpisode", 5f, 5f); // judge next episode every 10 sec
-        InvokeRepeating("JudgeWhetherEnterNextEpisode2", 20f, 20f); // judge next episode every 10 sec
+        InvokeRepeating("JudgeWhetherEnterNextEpisode", 5f, 5f); // judge next episode every 5 sec
+        InvokeRepeating("JudgeWhetherEnterNextEpisode2", 20f, 20f); // judge next episode every 20 sec
     }
 
     // to specify agent behavior at every step, based on the provided action
@@ -254,7 +254,9 @@ public class WalkmanAgent : Agent
         AddReward(robot.Head.transform.localPosition.y > 2.6f ? 1 : -1);
         //AddReward(robot.Hips.transform.localPosition.y -0.5f);
         //AddReward(robot.Chest.transform.localPosition.y - 0.5f);
-        float eulerLeftFootX = robot.LeftFoot.transform.eulerAngles.x < 180 ? robot.LeftFoot.transform.eulerAngles.x : 360 - robot.LeftFoot.transform.eulerAngles.x;
+
+        // if too slope it will deduct reward
+        float eulerLeftFootX = robot.LeftFoot.transform.eulerAngles.x < 180 ? robot.LeftFoot.transform.eulerAngles.x : 360 - robot.LeftFoot.transform.eulerAngles.x; 
         float eulerLeftFootZ = robot.LeftFoot.transform.eulerAngles.z < 180 ? robot.LeftFoot.transform.eulerAngles.z : 360 - robot.LeftFoot.transform.eulerAngles.z;
         float eulerRightFootX = robot.RightFoot.transform.eulerAngles.x < 180 ? robot.RightFoot.transform.eulerAngles.x : 360 - robot.RightFoot.transform.eulerAngles.x;
         float eulerRightFootZ = robot.RightFoot.transform.eulerAngles.z < 180 ? robot.RightFoot.transform.eulerAngles.z : 360 - robot.RightFoot.transform.eulerAngles.z;

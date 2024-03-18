@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Unity.Mathematics;
 
+// hit the ground call event
 public class Walkman : MonoBehaviour
 {
     public Body Head;
