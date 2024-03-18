@@ -1097,6 +1097,7 @@ MonoBehaviour:
   RightUpLeg: {fileID: 4742543258394645679}
   RightLeg: {fileID: 3109121593284830482}
   RightFoot: {fileID: 3645135264218452395}
+  footstate: 0
   RewardEvent:
     m_PersistentCalls:
       m_Calls: []
