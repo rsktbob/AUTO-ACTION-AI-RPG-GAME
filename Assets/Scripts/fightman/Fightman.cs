@@ -31,13 +31,7 @@ public class Fightman : MonoBehaviour
     public FightBody RightLeg;
     public FightBody RightFoot;
     public Sword Sword;
-    public FightFootState footstate = FightFootState.Right;
-
-    public enum FightFootState
-    {
-        Right = 0,
-        Left = 1
-    }
+    public FootState footstate = FootState.Right;
 
     [HideInInspector]
     public UnityEvent<float> RewardEvent;
@@ -95,33 +89,33 @@ public class Fightman : MonoBehaviour
     // Notify the WalkmanAgent on leftFoot collision.
     public void OnLeftFootCollisionEnter()
     {
-        if (footstate == FightFootState.Left)
+        if (footstate == FootState.Left)
         {
             if (Chest.transform.localPosition.y > 2.5f)
             {
                 Debug.Log("leftforward");
                 //RewardEvent.Invoke(15f - math.abs(0.4f - (RightFoot.transform.position.x - LeftFoot.transform.position.x)) * 60);
             }
-            footstate = FightFootState.Right;
+            footstate = FootState.Right;
         }
     }
 
     public void OnRightFootCollisionEnter()
     {
-        if (footstate == FightFootState.Right)
+        if (footstate == FootState.Right)
         {
             if (Chest.transform.localPosition.y > 2.5f)
             {
                 Debug.Log("rightforward");
                 //RewardEvent.Invoke(15f - math.abs(0.4f - (LeftFoot.transform.position.x - RightFoot.transform.position.x)) * 60);
             }
-            footstate = FightFootState.Left;
+            footstate = FootState.Left;
         }
     }
 
     public void OnRightFootCollisionLeave()
     {
-        if (LeftFoot.isTouchFloor & Chest.transform.localPosition.y > 2.5f & footstate == FightFootState.Right)
+        if (LeftFoot.isTouchFloor & Chest.transform.localPosition.y > 2.5f & footstate == FootState.Right)
         {
             Debug.Log("rightup");
             //RewardEvent.Invoke(10);
@@ -130,7 +124,7 @@ public class Fightman : MonoBehaviour
 
     public void OnLeftFootCollisionLeave()
     {
-        if (RightFoot.isTouchFloor & Chest.transform.localPosition.y > 2.5f & footstate == FightFootState.Left)
+        if (RightFoot.isTouchFloor & Chest.transform.localPosition.y > 2.5f & footstate == FootState.Left)
         {
             Debug.Log("leftforward");
             //RewardEvent.Invoke(10);

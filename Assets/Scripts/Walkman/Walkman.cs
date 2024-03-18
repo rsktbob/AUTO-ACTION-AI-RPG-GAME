@@ -30,13 +30,7 @@ public class Walkman : MonoBehaviour
     public Body RightUpLeg;
     public Body RightLeg;
     public Body RightFoot;
-    public FightFootState footstate = FightFootState.Right;
-
-    public enum FightFootState
-    {
-        Right = 0,
-        Left = 1
-    }
+    public FootState footstate = FootState.Right;
 
     [HideInInspector]
     public UnityEvent<float> RewardEvent;
@@ -86,33 +80,33 @@ public class Walkman : MonoBehaviour
     // Notify the WalkmanAgent on leftFoot collision.
     public void OnLeftFootCollisionEnter()
     {
-        if (footstate == FightFootState.Left)
+        if (footstate == FootState.Left)
         {
             if (Chest.transform.localPosition.y > 2.5f)
             {
                 Debug.Log($"left: {(15f - math.abs(0.4f - (RightFoot.transform.position.x - LeftFoot.transform.position.x)) * 60) * 3} {RightFoot.transform.position.x - LeftFoot.transform.position.x}");
                 RewardEvent.Invoke((15f - math.abs(0.4f - (RightFoot.transform.position.x - LeftFoot.transform.position.x)) * 60) * 3);
             }
-            footstate = FightFootState.Right;
+            footstate = FootState.Right;
         }
     }
 
     public void OnRightFootCollisionEnter()
     {
-        if (footstate == FightFootState.Right)
+        if (footstate == FootState.Right)
         {
             if (Chest.transform.localPosition.y > 2.5f)
             {
                 Debug.Log($"right: {(15f - math.abs(0.4f - (LeftFoot.transform.position.x - RightFoot.transform.position.x)) * 60) * 3} {LeftFoot.transform.position.x - RightFoot.transform.position.x}");
                 RewardEvent.Invoke((15f - math.abs(0.4f - (LeftFoot.transform.position.x - RightFoot.transform.position.x)) * 60) * 3);
             }
-            footstate = FightFootState.Left;
+            footstate = FootState.Left;
         }
     }
 
     public void OnRightFootCollisionLeave()
     {
-        if (LeftFoot.isTouchFloor & Chest.transform.localPosition.y > 2.5f & footstate == FightFootState.Right)
+        if (LeftFoot.isTouchFloor & Chest.transform.localPosition.y > 2.5f & footstate == FootState.Right)
         {
             //Debug.Log("rightup");
             RewardEvent.Invoke(10);
@@ -123,7 +117,7 @@ public class Walkman : MonoBehaviour
 
     public void OnLeftFootCollisionLeave()
     {
-        if (RightFoot.isTouchFloor & Chest.transform.localPosition.y > 2.5f & footstate == FightFootState.Left)
+        if (RightFoot.isTouchFloor & Chest.transform.localPosition.y > 2.5f & footstate == FootState.Left)
         {
             //Debug.Log("leftforward");
             RewardEvent.Invoke(10);
@@ -140,12 +134,12 @@ public class Walkman : MonoBehaviour
             float rotationX = Mathf.DeltaAngle(x1, x2);
             return Mathf.Max(6 - Mathf.Abs(Mathf.DeltaAngle(rotationX, 60)) * 0.6f, -15);
         };
-        if (footstate == FootState.Left && LeftFoot.transform.localPosition.y > 1.65f)
+        if (footstate == global::FootState.Left && LeftFoot.transform.localPosition.y > 1.65f)
         {
             RewardEvent.Invoke(getRotationReward(LeftLeg.transform.eulerAngles.x, LeftUpLeg.transform.eulerAngles.x) * 5);
             CancelInvoke("AddLegRotationReward");
         }
-        else if (footstate == FootState.Right && RightFoot.transform.localPosition.y > 1.65f)
+        else if (footstate == global::FootState.Right && RightFoot.transform.localPosition.y > 1.65f)
         {
             RewardEvent.Invoke(getRotationReward(RightLeg.transform.eulerAngles.x, RightUpLeg.transform.eulerAngles.x) * 5);
             CancelInvoke("AddLegRotationReward");
