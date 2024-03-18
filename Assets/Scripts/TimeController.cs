@@ -11,7 +11,7 @@ public class TimeController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("hi");
-            Time.timeScale = 0.05f;
+            Time.timeScale = 0.1f;
         }
 
         if (Input.GetKeyDown(KeyCode.S))

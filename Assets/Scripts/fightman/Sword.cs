@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class testTrigger : MonoBehaviour
+public class Sword : MonoBehaviour
 {
     private Collider colliderComponent;
+    public bool isInBody = false;
+    [Header("Event")]
+    public UnityEvent<float> SwordRewardEvent;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,12 +18,15 @@ public class testTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("body"))
         {
+            isInBody = true;
+            SwordRewardEvent.Invoke(1);//touch body
+
             //Get the normalized velocity vector
             Vector3 velocity = GetComponent<Rigidbody>().velocity;
 
@@ -53,19 +60,40 @@ public class testTrigger : MonoBehaviour
             else
             {
                 colliderComponent.isTrigger = false;
+                return;
             }
-            Debug.Log(dotProduct);
-            if(dotProduct < 6)
+            SwordRewardEvent.Invoke(5 + dotProduct);//good angle
+            if (dotProduct < 4)
+            {
+                colliderComponent.isTrigger = false;
+                return;
+            }
+            SwordRewardEvent.Invoke(15 + dotProduct);//slash successful
+        }
+        else
+        {
+            if (colliderComponent != null)
             {
                 colliderComponent.isTrigger = false;
             }
         }
-        else
-            colliderComponent.isTrigger = false; 
     }
     private void OnTriggerExit(Collider other)
     {
-
+        if (other.gameObject.CompareTag("body"))
+        {
+            isInBody = false;
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (!other.gameObject.CompareTag("body"))
+        {
+            if (colliderComponent != null)
+            {
+                colliderComponent.isTrigger = false;
+            }
+        }
     }
     private void OnCollisionExit(Collision other)
     {

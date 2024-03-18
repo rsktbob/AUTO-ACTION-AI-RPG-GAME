@@ -7,29 +7,30 @@ using Unity.Mathematics;
 
 
 
-public class Walkman : MonoBehaviour
+public class Fightman : MonoBehaviour
 {
-    public Body Head;
+    public FightBody Head;
 
-    public Body Chest;
-    public Body Waist;
+    public FightBody Chest;
+    public FightBody Waist;
 
-    public Body RightHand;
-    public Body RightArm;
-    public Body RightShoulder;
+    public FightBody RightHand;
+    public FightBody RightArm;
+    public FightBody RightShoulder;
 
-    public Body LeftHand;
-    public Body LeftArm;
-    public Body LeftShoulder;
+    public FightBody LeftHand;
+    public FightBody LeftArm;
+    public FightBody LeftShoulder;
 
-    public Body Hips;
-    public Body LeftUpLeg;
-    public Body LeftLeg;
-    public Body LeftFoot;
+    public FightBody Hips;
+    public FightBody LeftUpLeg;
+    public FightBody LeftLeg;
+    public FightBody LeftFoot;
 
-    public Body RightUpLeg;
-    public Body RightLeg;
-    public Body RightFoot;
+    public FightBody RightUpLeg;
+    public FightBody RightLeg;
+    public FightBody RightFoot;
+    public Sword Sword;
     public FightFootState footstate = FightFootState.Right;
 
     public enum FightFootState
@@ -48,12 +49,21 @@ public class Walkman : MonoBehaviour
         RightFoot.CollisionEnterEvent.AddListener(OnBodyCollisionEnter);
         LeftFoot.CollisionLeaveEvent.AddListener(OnBodyCollisionLeave);
         RightFoot.CollisionLeaveEvent.AddListener(OnBodyCollisionLeave);
+        Sword.SwordRewardEvent.AddListener(SwordReward);
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(Chest.transform.eulerAngles);
+    }
 
+    public void SwordReward(float value)
+    {
+        if (Chest.transform.localPosition.y > 2.5f)
+        {
+            RewardEvent.Invoke(value);
+        }
     }
 
     // Notify the WalkmanAgent on body collision.
@@ -90,7 +100,7 @@ public class Walkman : MonoBehaviour
             if (Chest.transform.localPosition.y > 2.5f)
             {
                 Debug.Log("leftforward");
-                RewardEvent.Invoke(15f - math.abs(0.4f - (RightFoot.transform.position.x - LeftFoot.transform.position.x)) * 60);
+                //RewardEvent.Invoke(15f - math.abs(0.4f - (RightFoot.transform.position.x - LeftFoot.transform.position.x)) * 60);
             }
             footstate = FightFootState.Right;
         }
@@ -103,7 +113,7 @@ public class Walkman : MonoBehaviour
             if (Chest.transform.localPosition.y > 2.5f)
             {
                 Debug.Log("rightforward");
-                RewardEvent.Invoke(15f - math.abs(0.4f - (LeftFoot.transform.position.x - RightFoot.transform.position.x)) * 60);
+                //RewardEvent.Invoke(15f - math.abs(0.4f - (LeftFoot.transform.position.x - RightFoot.transform.position.x)) * 60);
             }
             footstate = FightFootState.Left;
         }
@@ -114,7 +124,7 @@ public class Walkman : MonoBehaviour
         if (LeftFoot.isTouchFloor & Chest.transform.localPosition.y > 2.5f & footstate == FightFootState.Right)
         {
             Debug.Log("rightup");
-            RewardEvent.Invoke(10);
+            //RewardEvent.Invoke(10);
         }
     }
 
@@ -123,7 +133,7 @@ public class Walkman : MonoBehaviour
         if (RightFoot.isTouchFloor & Chest.transform.localPosition.y > 2.5f & footstate == FightFootState.Left)
         {
             Debug.Log("leftforward");
-            RewardEvent.Invoke(10);
+            //RewardEvent.Invoke(10);
         }
     }
 }
