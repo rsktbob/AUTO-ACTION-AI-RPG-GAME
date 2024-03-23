@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4620673870983349472}
   - component: {fileID: 8624452600867801925}
   - component: {fileID: 5788465533032316815}
-  - component: {fileID: 300595666691376877}
   - component: {fileID: 6286649891635951581}
   m_Layer: 0
   m_Name: room1
@@ -87,21 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &300595666691376877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5428032496318291546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d00514b5b6109f44ae78fad9666eaf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shouldMerge: 1
-  createColliderChildGameObject: 1
-  boxesPerEdge: 20
 --- !u!65 &6286649891635951581
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -195,7 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 158
+    VectorObservationSize: 206
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 45
@@ -228,8 +212,8 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
-  robotPrefab: {fileID: 2113573993983117111, guid: 6f014031ec217d14e9c6d2062364f7db, type: 3}
-  rewardUpperLimit: 2.6
+  robotPrefab: {fileID: 2113573993983117111, guid: 67f29d5c75cfa1d4dbb9f699e2c7e18a, type: 3}
+  rewardUpperLimit: 2.4
 --- !u!114 &8024799331358085081
 MonoBehaviour:
   m_ObjectHideFlags: 0

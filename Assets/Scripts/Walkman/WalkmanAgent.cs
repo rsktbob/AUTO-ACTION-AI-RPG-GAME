@@ -32,34 +32,34 @@ public class WalkmanAgent : Agent
             actions.ContinuousActions[0],
             actions.ContinuousActions[1],
             actions.ContinuousActions[2]
-            );
+            ) * 2;
         Vector3 targetLeftLegAngularVelocity = new Vector3(
             actions.ContinuousActions[3],
             actions.ContinuousActions[4],
             actions.ContinuousActions[5]
-            );
+            ) * 2;
         Vector3 targetLeftFootAngularVelocity = new Vector3(
             actions.ContinuousActions[6],
             actions.ContinuousActions[7],
             actions.ContinuousActions[8]
-            );
+            ) * 2;
 
         /* Right leg, Foot */
         Vector3 targetRightUpLegAngularVelocity = new Vector3(
             actions.ContinuousActions[9],
             actions.ContinuousActions[10],
             actions.ContinuousActions[11]
-            );
+            )*2;
         Vector3 targetRightLegAngularVelocity = new Vector3(
             actions.ContinuousActions[12],
             actions.ContinuousActions[13],
             actions.ContinuousActions[14]
-            );
+            ) * 2;
         Vector3 targetRightFootAngularVelocity = new Vector3(
             actions.ContinuousActions[15],
             actions.ContinuousActions[16],
             actions.ContinuousActions[17]
-            );
+            ) * 2;
 
 
         /* Left shoulder, arm, hand */
@@ -116,14 +116,14 @@ public class WalkmanAgent : Agent
             );
 
         // output Left Leg, Foot
-        robot.LeftLeg.AddAngularVelocity(10, 3, 10, targetLeftLegAngularVelocity);
-        robot.LeftUpLeg.AddAngularVelocity(10, 3, 10, targetLeftUpLegAngularVelocity);
-        robot.LeftFoot.AddAngularVelocity(10, 3, 10, targetLeftFootAngularVelocity);
+        robot.LeftLeg.AddAngularVelocity(20, 0, 0, targetLeftLegAngularVelocity);
+        robot.LeftUpLeg.AddAngularVelocity(30, 10, 30, targetLeftUpLegAngularVelocity);
+        robot.LeftFoot.AddAngularVelocity(20, 7, 20, targetLeftFootAngularVelocity);
 
         // output right Leg, Foot
-        robot.RightLeg.AddAngularVelocity(10, 3, 10, targetRightLegAngularVelocity);
-        robot.RightUpLeg.AddAngularVelocity(10, 3, 10, targetRightUpLegAngularVelocity);
-        robot.RightFoot.AddAngularVelocity(10, 3, 10, targetRightFootAngularVelocity);
+        robot.RightLeg.AddAngularVelocity(20, 0, 0, targetRightLegAngularVelocity);
+        robot.RightUpLeg.AddAngularVelocity(30, 10, 30, targetRightUpLegAngularVelocity);
+        robot.RightFoot.AddAngularVelocity(20, 7, 20, targetRightFootAngularVelocity);
 
         // output Left shoulder, arm, hand
         robot.LeftShoulder.AddAngularVelocity(5, 2, 5, targetLeftShoulderAngularVelocity);
@@ -135,12 +135,12 @@ public class WalkmanAgent : Agent
         robot.RightArm.AddAngularVelocity(5, 2, 5, targetRightArmAngularVelocity);
         robot.RightHand.AddAngularVelocity(5, 2, 5, targetRightHandAngularVelocity);
 
-        robot.Hips.AddAngularVelocity(5, 2, 5, targetHipAngularVelocity);
+        robot.Hips.AddAngularVelocity(30, 5, 13, targetHipAngularVelocity);
 
-        robot.Waist.AddAngularVelocity(5, 5, 5, targetWaistAngularVelocity);
-        robot.Chest.AddAngularVelocity(5, 5, 5, targetWaistAngularVelocity);
+        robot.Waist.AddAngularVelocity(20, 5, 20, targetWaistAngularVelocity);
+        robot.Chest.AddAngularVelocity(20, 5, 20, targetWaistAngularVelocity);
 
-        robot.Head.AddAngularVelocity(3, 3, 3, targetHeadAngularVelocity);
+        robot.Head.AddAngularVelocity(10, 3, 10, targetHeadAngularVelocity);
     }
 
     // to collect the vector observations of the agent for the step.(input)
@@ -150,62 +150,74 @@ public class WalkmanAgent : Agent
         sensor.AddObservation(RelativeBodyPosition(robot.LeftUpLeg.transform.position)); // position
         sensor.AddObservation(robot.LeftUpLeg.GetComponent<Rigidbody>().velocity); // velocity
         sensor.AddObservation(robot.LeftUpLeg.GetComponent<Rigidbody>().angularVelocity); // angular velocity
+        sensor.AddObservation(robot.LeftUpLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity);
 
         /* Left Leg */
         sensor.AddObservation(RelativeBodyPosition(robot.LeftLeg.transform.position)); // position
         sensor.AddObservation(robot.LeftLeg.GetComponent<Rigidbody>().velocity); // velocity
         sensor.AddObservation(robot.LeftLeg.GetComponent<Rigidbody>().angularVelocity); // angular velocity
+        sensor.AddObservation(robot.LeftLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity);
 
         /* Left Foot */
         sensor.AddObservation(RelativeBodyPosition(robot.LeftFoot.transform.position)); // position
         sensor.AddObservation(robot.LeftFoot.GetComponent<Rigidbody>().velocity); // velocity
         sensor.AddObservation(robot.LeftFoot.GetComponent<Rigidbody>().angularVelocity); // angular velocity
+        sensor.AddObservation(robot.LeftFoot.GetComponent<ConfigurableJoint>().targetAngularVelocity);
 
         /* Right Up Leg */
         sensor.AddObservation(RelativeBodyPosition(robot.RightUpLeg.transform.position)); // position
         sensor.AddObservation(robot.RightUpLeg.GetComponent<Rigidbody>().velocity); // velocity
         sensor.AddObservation(robot.RightUpLeg.GetComponent<Rigidbody>().angularVelocity); // angular velocity
+        sensor.AddObservation(robot.RightUpLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity);
 
         /* Right Leg */
         sensor.AddObservation(RelativeBodyPosition(robot.RightLeg.transform.position)); // position
         sensor.AddObservation(robot.RightLeg.GetComponent<Rigidbody>().velocity); // velocity
         sensor.AddObservation(robot.RightLeg.GetComponent<Rigidbody>().angularVelocity); // angular velocity
+        sensor.AddObservation(robot.RightLeg.GetComponent<ConfigurableJoint>().targetAngularVelocity);
 
         /* Right Foot */
         sensor.AddObservation(RelativeBodyPosition(robot.RightFoot.transform.position)); // position
         sensor.AddObservation(robot.RightFoot.GetComponent<Rigidbody>().velocity); // velocity
         sensor.AddObservation(robot.RightFoot.GetComponent<Rigidbody>().angularVelocity); // angular velocity
+        sensor.AddObservation(robot.RightFoot.GetComponent<ConfigurableJoint>().targetAngularVelocity);
 
         // -----------------------------------
         /* Left Shoulder */
         sensor.AddObservation(RelativeBodyPosition(robot.LeftShoulder.transform.position)); // position
         sensor.AddObservation(robot.LeftShoulder.GetComponent<Rigidbody>().velocity); // velocity
         sensor.AddObservation(robot.LeftShoulder.GetComponent<Rigidbody>().angularVelocity); // angular velocity
+        sensor.AddObservation(robot.LeftShoulder.GetComponent<ConfigurableJoint>().targetAngularVelocity);
 
         /* Left Arm */
         sensor.AddObservation(RelativeBodyPosition(robot.LeftArm.transform.position)); // position
         sensor.AddObservation(robot.LeftArm.GetComponent<Rigidbody>().velocity); // velocity
         sensor.AddObservation(robot.LeftArm.GetComponent<Rigidbody>().angularVelocity); // angular velocity
+        sensor.AddObservation(robot.LeftArm.GetComponent<ConfigurableJoint>().targetAngularVelocity);
 
         /* Left Hand */
         sensor.AddObservation(RelativeBodyPosition(robot.LeftHand.transform.position)); // position
         sensor.AddObservation(robot.LeftHand.GetComponent<Rigidbody>().velocity); // velocity
         sensor.AddObservation(robot.LeftHand.GetComponent<Rigidbody>().angularVelocity); // angular velocity
+        sensor.AddObservation(robot.LeftHand.GetComponent<ConfigurableJoint>().targetAngularVelocity);
 
         /* Right Shoulder */
         sensor.AddObservation(RelativeBodyPosition(robot.RightShoulder.transform.position)); // position
         sensor.AddObservation(robot.RightShoulder.GetComponent<Rigidbody>().velocity); // velocity
         sensor.AddObservation(robot.RightShoulder.GetComponent<Rigidbody>().angularVelocity); // angular velocity
+        sensor.AddObservation(robot.RightShoulder.GetComponent<ConfigurableJoint>().targetAngularVelocity);
 
         /* Right Arm */
         sensor.AddObservation(RelativeBodyPosition(robot.RightArm.transform.position)); // position
         sensor.AddObservation(robot.RightArm.GetComponent<Rigidbody>().velocity); // velocity
         sensor.AddObservation(robot.RightArm.GetComponent<Rigidbody>().angularVelocity); // angular velocity
+        sensor.AddObservation(robot.RightArm.GetComponent<ConfigurableJoint>().targetAngularVelocity);
 
         /* Right Hand */
         sensor.AddObservation(RelativeBodyPosition(robot.RightHand.transform.position)); // position
         sensor.AddObservation(robot.RightHand.GetComponent<Rigidbody>().velocity); // velocity
         sensor.AddObservation(robot.RightHand.GetComponent<Rigidbody>().angularVelocity); // angular velocity
+        sensor.AddObservation(robot.RightHand.GetComponent<ConfigurableJoint>().targetAngularVelocity);
 
 
         // -----------------------------------
@@ -214,6 +226,7 @@ public class WalkmanAgent : Agent
         sensor.AddObservation(robot.Hips.transform.localPosition); // position
         sensor.AddObservation(robot.Hips.GetComponent<Rigidbody>().velocity); // velocity
         sensor.AddObservation(robot.Hips.GetComponent<Rigidbody>().angularVelocity); // angular velocity
+        sensor.AddObservation(robot.Hips.GetComponent<ConfigurableJoint>().targetAngularVelocity);
 
         // -----------------------------------
 
@@ -221,16 +234,19 @@ public class WalkmanAgent : Agent
         sensor.AddObservation(RelativeBodyPosition(robot.Chest.transform.position)); // position
         sensor.AddObservation(robot.Chest.GetComponent<Rigidbody>().velocity); // velocity
         sensor.AddObservation(robot.Chest.GetComponent<Rigidbody>().angularVelocity); // angular velocity
+        sensor.AddObservation(robot.Chest.GetComponent<ConfigurableJoint>().targetAngularVelocity);
         /* Waist */
         sensor.AddObservation(RelativeBodyPosition(robot.Waist.transform.position)); // position
         sensor.AddObservation(robot.Waist.GetComponent<Rigidbody>().velocity); // velocity
         sensor.AddObservation(robot.Waist.GetComponent<Rigidbody>().angularVelocity); // angular velocity
+        sensor.AddObservation(robot.Waist.GetComponent<ConfigurableJoint>().targetAngularVelocity);
         /* Head */
         sensor.AddObservation(RelativeBodyPosition(robot.Head.transform.position)); // position
         sensor.AddObservation(robot.Head.GetComponent<Rigidbody>().velocity); // velocity
         sensor.AddObservation(robot.Head.GetComponent<Rigidbody>().angularVelocity); // angular velocity
+        sensor.AddObservation(robot.Head.GetComponent<ConfigurableJoint>().targetAngularVelocity);
 
-        ////is touch floor
+        //is touch floor
         sensor.AddObservation(robot.LeftUpLeg.isTouchFloor);
         sensor.AddObservation(robot.LeftLeg.isTouchFloor);
         sensor.AddObservation(robot.LeftFoot.isTouchFloor);
@@ -250,28 +266,36 @@ public class WalkmanAgent : Agent
     //Add reward to robot
     private void AddRewardToRobot() 
     {
-        AddReward(robot.Hips.transform.localPosition.y > 2.2f ? 1 : -1);
-        AddReward(robot.Head.transform.localPosition.y > 2.6f ? 1 : -1);
-        //AddReward(robot.Hips.transform.localPosition.y -0.5f);
+        AddReward(robot.Hips.transform.localPosition.y > 2.1f ? 1 : -1);
+        AddReward(robot.Chest.transform.localPosition.y > 2.4f ? 1 : -1);
+        //AddReward(robot.Hips.transform.localPosition.y - 0.5f);
         //AddReward(robot.Chest.transform.localPosition.y - 0.5f);
-        float eulerLeftUpLegJointZ = Mathf.Abs(Mathf.DeltaAngle(robot.LeftUpLeg.transform.eulerAngles.z, robot.Hips.transform.eulerAngles.z));
-        float eulerRightUpLegJointZ = Mathf.Abs(Mathf.DeltaAngle(robot.RightUpLeg.transform.eulerAngles.z, robot.Hips.transform.eulerAngles.z));
-        float eulerLeftUpLegJointY = Mathf.Abs(Mathf.DeltaAngle(robot.LeftUpLeg.transform.eulerAngles.y, robot.Hips.transform.eulerAngles.y));
-        float eulerRightUpLegJointY = Mathf.Abs(Mathf.DeltaAngle(robot.RightUpLeg.transform.eulerAngles.y, robot.Hips.transform.eulerAngles.y));
+        //float eulerLeftUpLegJointZ = Mathf.Abs(Mathf.DeltaAngle(robot.LeftUpLeg.transform.eulerAngles.z, robot.Hips.transform.eulerAngles.z));
+        //float eulerRightUpLegJointZ = Mathf.Abs(Mathf.DeltaAngle(robot.RightUpLeg.transform.eulerAngles.z, robot.Hips.transform.eulerAngles.z));
+        //float eulerLeftUpLegJointY = Mathf.Abs(Mathf.DeltaAngle(robot.LeftUpLeg.transform.eulerAngles.y, robot.Hips.transform.eulerAngles.y));
+        //float eulerRightUpLegJointY = Mathf.Abs(Mathf.DeltaAngle(robot.RightUpLeg.transform.eulerAngles.y, robot.Hips.transform.eulerAngles.y));
+
         float eulerLeftFootX = robot.LeftFoot.transform.eulerAngles.x < 180 ? robot.LeftFoot.transform.eulerAngles.x : 360 - robot.LeftFoot.transform.eulerAngles.x;
         float eulerLeftFootZ = robot.LeftFoot.transform.eulerAngles.z < 180 ? robot.LeftFoot.transform.eulerAngles.z : 360 - robot.LeftFoot.transform.eulerAngles.z;
         float eulerRightFootX = robot.RightFoot.transform.eulerAngles.x < 180 ? robot.RightFoot.transform.eulerAngles.x : 360 - robot.RightFoot.transform.eulerAngles.x;
         float eulerRightFootZ = robot.RightFoot.transform.eulerAngles.z < 180 ? robot.RightFoot.transform.eulerAngles.z : 360 - robot.RightFoot.transform.eulerAngles.z;
-        float eulerChestX = robot.Chest.transform.eulerAngles.x < 180 ? robot.Chest.transform.eulerAngles.x : 360 - robot.Chest.transform.eulerAngles.x;
-        float eulerChestZ = robot.Chest.transform.eulerAngles.z < 180 ? robot.Chest.transform.eulerAngles.z : 360 - robot.Chest.transform.eulerAngles.z;
+        float eulerHipZ = robot.Hips.transform.eulerAngles.z < 180 ? robot.Hips.transform.eulerAngles.z : 360 - robot.Hips.transform.eulerAngles.z;
+
+        //float eulerChestX = robot.Chest.transform.eulerAngles.x < 180 ? robot.Chest.transform.eulerAngles.x : 360 - robot.Chest.transform.eulerAngles.x;
+        //float eulerChestZ = robot.Chest.transform.eulerAngles.z < 180 ? robot.Chest.transform.eulerAngles.z : 360 - robot.Chest.transform.eulerAngles.z;
         AddReward((45 - eulerLeftFootX - eulerLeftFootZ) / 100);
         AddReward((45 - eulerRightFootX - eulerRightFootZ) / 100);
-        AddReward((10 - eulerLeftUpLegJointZ) / 20);
-        AddReward((10 - eulerRightUpLegJointZ) / 20);
-        AddReward((20 - eulerLeftUpLegJointY) / 80);
-        AddReward((20 - eulerRightUpLegJointY) / 80);
-        AddReward((30 - eulerChestX) / 20);
-        AddReward((30 - eulerChestZ) / 20);
+        AddReward((20 - eulerHipZ) / 20);
+        float eulerChestY = robot.Chest.transform.localEulerAngles.y < 180 ? robot.Chest.transform.localEulerAngles.y : 360 - robot.Chest.transform.localEulerAngles.y;
+        AddReward((10 - eulerChestY) / 10);
+        //AddReward((10 - eulerLeftUpLegJointZ) / 20);
+        //AddReward((10 - eulerRightUpLegJointZ) / 20);
+        //AddReward((20 - eulerLeftUpLegJointY) / 80);
+        //AddReward((20 - eulerRightUpLegJointY) / 80);
+
+        //AddReward((30 - eulerChestX) / 20);
+        //AddReward((30 - eulerChestZ) / 20);
+        AddReward(robot.LeftFoot.transform.position.z+0.15 > robot.RightFoot.transform.position.z ? -10 : 0);
     }
 
 

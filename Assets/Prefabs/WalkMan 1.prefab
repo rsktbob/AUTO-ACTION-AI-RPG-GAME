@@ -424,7 +424,7 @@ ConfigurableJoint:
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 200
+    positionSpring: 400
     positionDamper: 20
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
@@ -724,7 +724,7 @@ Transform:
   m_GameObject: {fileID: 1377574256411950836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.09962, y: 1.8143001, z: -0.073722}
-  m_LocalScale: {x: 0.10446425, y: 0.38829887, z: 0.12690052}
+  m_LocalScale: {x: 0.1044629, y: 0.38829887, z: 0.1269022}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2113573993983117110}
@@ -876,12 +876,12 @@ ConfigurableJoint:
     positionSpring: 0
     positionDamper: 0
     maximumForce: 3.4028233e+38
-  m_TargetRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_TargetRotation: {x: 0.11320321, y: 0, z: 0, w: 0.9935719}
   m_TargetAngularVelocity: {x: 0, y: 0, z: 0}
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 100
+    positionSpring: 0
     positionDamper: 20
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
@@ -1078,7 +1078,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2113573993983117111}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 011fee0cb5b9bea48ad14e364a4d254d, type: 3}
+  m_Script: {fileID: 11500000, guid: 8927a7bca0e1d7646bf8f8cceee9e631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Head: {fileID: 8915214710051455614}
@@ -1517,7 +1517,7 @@ ConfigurableJoint:
     positionSpring: 0
     positionDamper: 0
     maximumForce: 3.4028233e+38
-  m_TargetRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_TargetRotation: {x: 0, y: -0.70710677, z: 0, w: 0.70710677}
   m_TargetAngularVelocity: {x: 0, y: 0, z: 0}
   m_RotationDriveMode: 0
   m_AngularXDrive:
@@ -1527,7 +1527,7 @@ ConfigurableJoint:
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 0
+    positionSpring: 400
     positionDamper: 20
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
@@ -2366,7 +2366,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5262325608169345765}
   serializedVersion: 2
-  m_Mass: 15
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -2446,12 +2446,12 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 200
+    positionSpring: 400
     positionDamper: 20
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 30
+    positionSpring: 400
     positionDamper: 20
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
@@ -3000,12 +3000,12 @@ ConfigurableJoint:
     positionSpring: 0
     positionDamper: 0
     maximumForce: 3.4028233e+38
-  m_TargetRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_TargetRotation: {x: 0.11320321, y: 0, z: 0, w: 0.9935719}
   m_TargetAngularVelocity: {x: 0, y: 0, z: 0}
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 100
+    positionSpring: 0
     positionDamper: 20
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
@@ -3079,7 +3079,7 @@ Transform:
   m_GameObject: {fileID: 6547521274650835837}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.09962, y: 1.5639, z: -0.12852}
-  m_LocalScale: {x: 0.115753226, y: 0.0679523, z: 0.27255097}
+  m_LocalScale: {x: 0.115753226, y: 0.0679523, z: 0.2725474}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2113573993983117110}
@@ -3156,7 +3156,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6547521274650835837}
   serializedVersion: 2
-  m_Mass: 15
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -3236,12 +3236,12 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 200
+    positionSpring: 300
     positionDamper: 20
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 30
+    positionSpring: 300
     positionDamper: 20
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
@@ -3934,7 +3934,7 @@ ConfigurableJoint:
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 200
+    positionSpring: 400
     positionDamper: 20
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
