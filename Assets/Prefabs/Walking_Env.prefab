@@ -179,16 +179,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 206
+    VectorObservationSize: 254
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 45
+      m_NumContinuousActions: 42
       BranchSizes: 01000000
     VectorActionSize: 
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 71156fd96b6d7ba47a4311893865823b, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: My Behavior

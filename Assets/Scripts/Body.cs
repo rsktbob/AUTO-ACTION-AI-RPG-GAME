@@ -48,4 +48,31 @@ public class Body : MonoBehaviour
         float newSpeedZ = Mathf.Clamp(joint.targetAngularVelocity.z + acceleration.z, -zLimit, zLimit);
         joint.targetAngularVelocity = new Vector3(newSpeedX, newSpeedY, newSpeedZ);
     }
+    public void AddAngularVelocity(float xLimit, float yLimit, float zLimit, Vector3 acceleration, int num)
+    {
+        ConfigurableJoint[] joint = GetComponents<ConfigurableJoint>();
+        float newSpeedX = Mathf.Clamp(joint[num].targetAngularVelocity.x + acceleration.x, -xLimit, xLimit);
+        float newSpeedY = Mathf.Clamp(joint[num].targetAngularVelocity.y + acceleration.y, -yLimit, yLimit);
+        float newSpeedZ = Mathf.Clamp(joint[num].targetAngularVelocity.z + acceleration.z, -zLimit, zLimit);
+        joint[num].targetAngularVelocity = new Vector3(newSpeedX, newSpeedY, newSpeedZ);
+    }
+    public void AddRotation(Vector3 acceleration)
+    {
+        ConfigurableJoint joint = GetComponent<ConfigurableJoint>();
+        float newRotationX = joint.targetRotation.eulerAngles.x + acceleration.x;
+        float newRotationY = joint.targetRotation.eulerAngles.y + acceleration.y;
+        float newRotationZ = joint.targetRotation.eulerAngles.z + acceleration.z;
+
+        joint.targetRotation = Quaternion.Euler(newRotationX, newRotationY, newRotationZ);
+    }
+
+    public void AddRotation(Vector3 acceleration, int num)
+    {
+        ConfigurableJoint[] joint = GetComponents<ConfigurableJoint>();
+        float newRotationX = joint[num].targetRotation.eulerAngles.x + acceleration.x;
+        float newRotationY = joint[num].targetRotation.eulerAngles.y + acceleration.y;
+        float newRotationZ = joint[num].targetRotation.eulerAngles.z + acceleration.z;
+
+        joint[num].targetRotation = Quaternion.Euler(newRotationX, newRotationY, newRotationZ);
+    }
 }
