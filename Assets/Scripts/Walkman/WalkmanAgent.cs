@@ -23,7 +23,7 @@ public class WalkmanAgent : Agent
         InvokeRepeating("JudgeWhetherEnterNextEpisode2", 20f, 20f); // judge next episode every 10 sec
     }
 
-    // to specify agent behavior at every step, based on the provided action
+    // to specify agent behavior at every step, based on the provided actiona
     public override void OnActionReceived(ActionBuffers actions)
     {
 
