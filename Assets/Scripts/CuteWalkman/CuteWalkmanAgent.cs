@@ -22,7 +22,14 @@ public class CuteWalkmanAgent : Agent
         InvokeRepeating("JudgeWhetherEnterNextEpisode", 5f, 5f); // judge next episode every 10 sec
     }
 
-    // to specify agent behavior at every step, based on the provided actiona
+
+    // control the output()
+    public override void Heuristic(in ActionBuffers actionsOut) 
+    {
+        
+    }
+
+    // to specify agent behavior at every step, based on the provided actiona (output)
     public override void OnActionReceived(ActionBuffers actions)
     {
 
